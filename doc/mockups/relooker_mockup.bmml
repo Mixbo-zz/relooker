@@ -28,5 +28,12 @@
         <text>Highlight%20Strings</text>
       </controlProperties>
     </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Image" x="335" y="159" w="440" h="293" measuredW="1280" measuredH="853" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <filter>true</filter>
+        <src>../images/metal-cube_0011.jpg</src>
+        <text>visualization</text>
+      </controlProperties>
+    </control>
   </controls>
 </mockup>

@@ -17,5 +17,11 @@
         <text>Hexadecimal%0AStrings%0ARessources%0ADisassembly</text>
       </controlProperties>
     </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Image" x="420" y="153" w="491" h="303" measuredW="631" measuredH="282" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>../images/disass.png</src>
+        <text>disass</text>
+      </controlProperties>
+    </control>
   </controls>
 </mockup>
