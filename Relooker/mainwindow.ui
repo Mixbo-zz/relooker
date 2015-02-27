@@ -16,19 +16,19 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
-     <widget class="QTabWidget" name="tabVisWidget">
+     <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
        <number>1</number>
       </property>
-      <widget class="QWidget" name="tab_3">
+      <widget class="QWidget" name="tab_vis">
        <attribute name="title">
         <string>Visualization</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
-         <layout class="QVBoxLayout" name="verticalLayout_4">
+         <layout class="QVBoxLayout" name="verticalLayout_view">
           <item>
-           <spacer name="verticalSpacer_2">
+           <spacer name="verticalSpacer_upView">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -66,7 +66,7 @@
          </layout>
         </item>
         <item row="0" column="1">
-         <layout class="QVBoxLayout" name="verticalLayout_2">
+         <layout class="QVBoxLayout" name="verticalLayout_settings">
           <property name="sizeConstraint">
            <enum>QLayout::SetMinAndMaxSize</enum>
           </property>
@@ -83,9 +83,9 @@
             </property>
             <layout class="QFormLayout" name="formLayout">
              <item row="0" column="0">
-              <layout class="QVBoxLayout" name="verticalLayout">
+              <layout class="QVBoxLayout" name="verticalLayout_settingsOptions">
                <item>
-                <widget class="QComboBox" name="comboBox">
+                <widget class="QComboBox" name="comboBox_mode">
                  <item>
                   <property name="text">
                    <string>3D</string>
@@ -99,7 +99,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QComboBox" name="comboBox_2">
+                <widget class="QComboBox" name="comboBox_algo">
                  <item>
                   <property name="text">
                    <string>Entropy</string>
@@ -118,7 +118,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QCheckBox" name="checkBox">
+                <widget class="QCheckBox" name="checkBox_strings">
                  <property name="text">
                   <string>Highlight Strings</string>
                  </property>
@@ -131,7 +131,7 @@
            </widget>
           </item>
           <item>
-           <spacer name="verticalSpacer">
+           <spacer name="verticalSpacer_downSettings">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -147,13 +147,13 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_4">
+      <widget class="QWidget" name="tab_edit">
        <attribute name="title">
         <string>Editor</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
-         <layout class="QVBoxLayout" name="verticalLayout_5">
+         <layout class="QVBoxLayout" name="verticalLayout_tabs">
           <item>
            <spacer name="verticalSpacer_4">
             <property name="orientation">
@@ -213,7 +213,7 @@
            </widget>
           </item>
           <item>
-           <spacer name="verticalSpacer_3">
+           <spacer name="verticalSpacer_downTabs">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -238,10 +238,10 @@
           <property name="currentIndex">
            <number>3</number>
           </property>
-          <widget class="QWidget" name="page">
+          <widget class="QWidget" name="page_hex">
            <layout class="QGridLayout" name="gridLayout_4">
             <item row="0" column="0">
-             <widget class="QGroupBox" name="groupBox">
+             <widget class="QGroupBox" name="groupBox_hex">
               <property name="title">
                <string>Hex</string>
               </property>
@@ -249,10 +249,10 @@
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="page_2">
+          <widget class="QWidget" name="page_strings">
            <layout class="QGridLayout" name="gridLayout_5">
             <item row="0" column="0">
-             <widget class="QGroupBox" name="groupBox_2">
+             <widget class="QGroupBox" name="groupBox_strings">
               <property name="title">
                <string>Strings</string>
               </property>
@@ -260,10 +260,10 @@
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="page_3">
+          <widget class="QWidget" name="page_ressources">
            <layout class="QGridLayout" name="gridLayout_6">
             <item row="0" column="0">
-             <widget class="QGroupBox" name="groupBox_3">
+             <widget class="QGroupBox" name="groupBox_ressources">
               <property name="title">
                <string>Ressources</string>
               </property>
@@ -271,10 +271,10 @@
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="page_4">
+          <widget class="QWidget" name="page_disassembly">
            <layout class="QGridLayout" name="gridLayout_7">
             <item row="0" column="0">
-             <widget class="QGroupBox" name="groupBox_4">
+             <widget class="QGroupBox" name="groupBox_disassembly">
               <property name="title">
                <string>Disassembly</string>
               </property>
@@ -286,7 +286,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_5">
+      <widget class="QWidget" name="tab_stats">
        <attribute name="title">
         <string>Stats</string>
        </attribute>
