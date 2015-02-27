@@ -1,0 +1,32 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="955" measuredH="505" mockupW="659" mockupH="425">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="296" y="80" w="659" h="425" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>RElooker%20Visualization</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TabBar" x="311" y="110" w="629" h="364" measuredW="224" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>%2Crelooker_edit%26bm%3Brelooker_edit.bmml%26bm%3Brelooker_edit.bmml%26bm%3Brelooker_edit.bmml%2Crelooker_stats%26bm%3Brelooker_stats.bmml%26bm%3Brelooker_stats.bmml%26bm%3Brelooker_stats.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22121%2C30%2C157%2C57%22%20href%3D%22relooker_edit.bmml%22%20alt%3D%22relooker_edit%22%20id%3D%221%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22157%2C30%2C201%2C57%22%20href%3D%22relooker_stats.bmml%22%20alt%3D%22relooker_stats%22%20id%3D%221%22/%3E</map>
+        <text>Visualization%2CEdit%2CStats</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Canvas" x="326" y="151" w="459" h="308" measuredW="100" measuredH="70" zOrder="2" locked="false" isInGroup="-1"/>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::ComboBox" x="807" y="166" w="106" h="-1" measuredW="47" measuredH="24" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>3D</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::ComboBox" x="807" y="205" w="106" h="-1" measuredW="76" measuredH="24" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Entropy</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::CheckBox" x="807" y="244" w="138" h="22" measuredW="119" measuredH="22" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Highlight%20Strings</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
