@@ -1,2 +1,14 @@
 
 build-Relooker-Desktop-Debug/*
+
+*.o
+
+Relooker/Makefile
+
+Relooker/moc_mainwindow.cpp
+
+Relooker/Relooker.app/*
+
+*.lproj
+
+Relooker/ui_mainwindow.h
