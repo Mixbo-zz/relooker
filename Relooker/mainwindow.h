@@ -20,6 +20,8 @@ private slots:
 
     void on_verticalTabsList_itemClicked(QListWidgetItem *item);
 
+    void on_verticalTabsList_currentRowChanged(int currentRow);
+
 private:
     Ui::MainWindow *ui;
 };
