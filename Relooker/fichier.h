@@ -6,9 +6,13 @@
 class Fichier
 {
 public:
-    Fichier();
+    Fichier(std::string);
+    void openFile();
     std::string getContent();
     bool setContent(std::string s);
+private:
+	char * content;
+	std::string path;
 };
 
 #endif // FICHIER_H

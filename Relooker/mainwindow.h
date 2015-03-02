@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "fichier.h"
 class QListWidgetItem;
 
 namespace Ui {
@@ -22,8 +23,13 @@ private slots:
 
     void on_verticalTabsList_currentRowChanged(int currentRow);
 
+    void on_actionOpen_triggered();
+
+    void on_actionAbout_triggered();
+
 private:
     Ui::MainWindow *ui;
+    Fichier *fichier;
 };
 
 #endif // MAINWINDOW_H
