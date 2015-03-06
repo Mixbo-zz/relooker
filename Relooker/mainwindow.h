@@ -29,7 +29,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    Fichier *fichier;
+    Fichier *binaire;
 };
 
 #endif // MAINWINDOW_H

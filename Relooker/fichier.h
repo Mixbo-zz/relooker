@@ -8,11 +8,12 @@ class Fichier
 public:
     Fichier(std::string);
     void openFile();
-    std::string getContent();
-    bool setContent(std::string s);
+    char * getContent();
+	unsigned int getSize();
 private:
 	char * content;
 	std::string path;
+	unsigned int size;
 };
 
 #endif // FICHIER_H

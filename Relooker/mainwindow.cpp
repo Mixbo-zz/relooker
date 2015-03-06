@@ -31,7 +31,12 @@ void MainWindow::on_actionOpen_triggered()
 {
     QString filename = QFileDialog::getOpenFileName(this,tr("Open File"),"./","All Files (*.*)");
 
-    fichier = new Fichier(filename.toUtf8().constData());
+    binaire = new Fichier(filename.toUtf8().constData());
+	unsigned int size = binaire->getSize();
+
+
+	ui->labelNameValue->setText(filename);
+	ui->labelSizeValue->setText(QString::number(size));
 }
 
 void MainWindow::on_actionAbout_triggered()

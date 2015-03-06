@@ -19,6 +19,7 @@ void Fichier::openFile()
 	if (file.is_open())
 	{
 	    size = file.tellg();
+		this->size = size;
 	    content = new char [size];
 	    file.seekg (0, ios::beg);
 	    file.read (content, size);
@@ -26,7 +27,11 @@ void Fichier::openFile()
 	}
 }
 
-std::string Fichier::getContent()
+char * Fichier::getContent()
 {
 	return this->content;
+}
+unsigned int Fichier::getSize()
+{
+	return this->size;
 }
