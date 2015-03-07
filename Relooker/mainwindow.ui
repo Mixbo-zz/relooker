@@ -463,7 +463,6 @@
        <string notr="true">QWidget
 {
 	background-color: rgb(42, 42, 42);
-	font: 8pt &quot;Verdana&quot;;
 	color: rgb(213, 213, 213);
 }
 QComboBox
@@ -509,7 +508,7 @@ QTabWidget::tab-bar {
  }</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_vis">
        <attribute name="title">
@@ -3668,7 +3667,7 @@ QTabWidget::tab-bar {
      <x>0</x>
      <y>0</y>
      <width>608</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
