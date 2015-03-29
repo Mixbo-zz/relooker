@@ -1,4 +1,3 @@
-#!/opt/local/bin/bash
+#!/bin/bash
 qmake Relooker.pro
 make
-./Relooker.app/Contents/MacOS/Relooker
