@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "fichier.h"
+#include "twodimension.h"
 class QListWidgetItem;
 
 namespace Ui {
@@ -20,16 +21,14 @@ public:
 private slots:
 
     void on_verticalTabsList_itemClicked(QListWidgetItem *item);
-
     void on_verticalTabsList_currentRowChanged(int currentRow);
-
     void on_actionOpen_triggered();
-
     void on_actionAbout_triggered();
 
 private:
     Ui::MainWindow *ui;
     Fichier *binaire;
+    TwoDimension* tdim;
 };
 
 #endif // MAINWINDOW_H

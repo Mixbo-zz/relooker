@@ -30,13 +30,16 @@ void MainWindow::on_verticalTabsList_currentRowChanged(int currentRow)
 void MainWindow::on_actionOpen_triggered()
 {
     QString filename = QFileDialog::getOpenFileName(this,tr("Open File"),"./","All Files (*.*)");
+    if(!filename.isEmpty())
+    {
+        binaire = new Fichier(filename.toUtf8().constData());
+	    unsigned int size = binaire->getSize();
 
-    binaire = new Fichier(filename.toUtf8().constData());
-	unsigned int size = binaire->getSize();
+	    ui->labelNameValue->setText(filename);
+	    ui->labelSizeValue->setText(QString::number(size)+" Bytes");
 
-
-	ui->labelNameValue->setText(filename);
-	ui->labelSizeValue->setText(QString::number(size));
+        tdim = new TwoDimension(binaire->getContent(),size);
+    }
 }
 
 void MainWindow::on_actionAbout_triggered()
