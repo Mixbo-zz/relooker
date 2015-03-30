@@ -53,7 +53,7 @@ void MainWindow::on_actionOpen_triggered()
 
         QTimer *timer = new QTimer(this);
         connect(timer, SIGNAL(timeout()), this, SLOT(update_hex_view()));
-        timer->start(1000);
+        timer->start(100);
     }
 }
 
