@@ -48,7 +48,7 @@ void Visualizer::paintTwoD()
         int * items = this->tdim->getRange();
         int size = this->tdim->getSize();
         int itemSize = 5;
-        int itemsCol = this->width()/itemSize-2;
+        int itemsCol = (this->width()-10)/itemSize-2;
         QPainter painter(this);
         QPen framepen(Qt::black);
         framepen.setWidth(1);
@@ -78,7 +78,7 @@ void Visualizer::paintTwoD()
                         break;
            }
            painter.setPen(framepen);
-           painter.drawRect(i%itemsCol * itemSize + 2*i%itemsCol,i/itemsCol*itemSize,itemSize,itemSize);
+           painter.drawRect(i%itemsCol * itemSize /*+ 2*i%itemsCol*/,i/itemsCol*itemSize,itemSize,itemSize);
         }
         this->resize(this->width(),size/itemsCol*itemSize);//size/itemsCol*itemSize+10);
     }

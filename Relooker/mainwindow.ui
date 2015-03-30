@@ -960,12 +960,12 @@ QTabWidget::tab-bar {
                 <widget class="QComboBox" name="comboBox_mode">
                  <item>
                   <property name="text">
-                   <string>3D</string>
+                   <string>2D</string>
                   </property>
                  </item>
                  <item>
                   <property name="text">
-                   <string>2D</string>
+                   <string>3D</string>
                   </property>
                  </item>
                 </widget>
