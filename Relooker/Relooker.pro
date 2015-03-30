@@ -15,10 +15,12 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     fichier.cpp \
-    twodimension.cpp
+    twodimension.cpp \
+    visualizer.cpp
 
 HEADERS  += mainwindow.h \
     fichier.h \
-    twodimension.h
+    twodimension.h \
+    visualizer.h
 
 FORMS    += mainwindow.ui
