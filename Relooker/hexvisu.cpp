@@ -1,8 +1,5 @@
 #include "hexvisu.h"
 #include <QPainter>
-#include <iostream>
-#include <iomanip>
-#include <string>
 
 using namespace std;
 HexVisu::HexVisu(QWidget *parent) :
