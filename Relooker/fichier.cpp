@@ -31,7 +31,7 @@ char * Fichier::getContent()
 {
 	return this->content;
 }
-unsigned int Fichier::getSize()
+int Fichier::getSize()
 {
 	return this->size;
 }

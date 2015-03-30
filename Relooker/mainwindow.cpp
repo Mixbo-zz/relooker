@@ -34,7 +34,7 @@ void MainWindow::on_actionOpen_triggered()
     if(!filename.isEmpty())
     {
         binaire = new Fichier(filename.toUtf8().constData());
-	    unsigned int size = binaire->getSize();
+	    int size = binaire->getSize();
 
 	    ui->labelNameValue->setText(filename);
 	    ui->labelSizeValue->setText(QString::number(size)+" Bytes");
@@ -44,10 +44,11 @@ void MainWindow::on_actionOpen_triggered()
         ui->visuWidget->set2(tdim);
         ui->visuWidget->setMode(1);
 
-        QSize sizeScroll = QSize(ui->scrollArea->width(),ui->visuWidget->height());
+        QSize sizeScroll = QSize(ui->scrollArea->width(),ui->visuWidget->getHeight());
         ui->scrollAreaWidgetContents->resize(sizeScroll);
 
         ui->visuWidget->update();
+
     }
 }
 

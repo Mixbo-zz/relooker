@@ -9,11 +9,11 @@ public:
     Fichier(std::string);
     void openFile();
     char * getContent();
-	unsigned int getSize();
+    int getSize();
 private:
 	char * content;
 	std::string path;
-	unsigned int size;
+	int size;
 };
 
 #endif // FICHIER_H

@@ -7,6 +7,23 @@ Visualizer::Visualizer(QWidget *parent) :
 {
     this->mode = 0;
     this->tdim = NULL;
+    this->itemsCol = 16;
+    this->itemSize = 5;
+}
+
+int Visualizer::getHeight()
+{
+    int height = 0;
+
+    if(this->mode == 1)
+    {
+        if(this->tdim)
+        {
+            int size = this->tdim->getSize();       
+            height = size/this->itemsCol*this->itemSize+50;
+        }
+    }
+    return height;
 }
 
 void Visualizer::setMode(int mode)
@@ -48,8 +65,8 @@ void Visualizer::paintTwoD()
     {
         int * items = this->tdim->getRange();
         int size = this->tdim->getSize();
-        int itemSize = 5;
-        int itemsCol = (this->width()-10)/itemSize-2;
+        //this->resize(this->width(),size/itemsCol*itemSize+50);//size/itemsCol*itemSize+10);
+
         QPainter painter(this);
         QPen framepen(Qt::black);
         framepen.setWidth(1);
@@ -58,12 +75,12 @@ void Visualizer::paintTwoD()
            switch(items[i])
            {
                 case 0:
-                        framepen.setColor(Qt::black);
-                        painter.setBrush(Qt::black);
-                        break;
-                case 1:
                         framepen.setColor(Qt::white);
                         painter.setBrush(Qt::white);
+                        break;
+                case 1:
+                        framepen.setColor(Qt::black);
+                        painter.setBrush(Qt::black);
                         break;
                 case 2:
                         framepen.setColor(Qt::red);
@@ -79,8 +96,10 @@ void Visualizer::paintTwoD()
                         break;
            }
            painter.setPen(framepen);
-           painter.drawRect(i%itemsCol * itemSize /*+ 2*i%itemsCol*/,i/itemsCol*itemSize,itemSize,itemSize);
+           painter.drawRect(i%this->itemsCol * this->itemSize /*+ 2*i%itemsCol*/,i/this->itemsCol*this->itemSize,this->itemSize,this->itemSize);
         }
-        this->resize(this->width(),size/itemsCol*itemSize);//size/itemsCol*itemSize+10);
+
+        //this->resize(this->width(),size/itemsCol*itemSize+50);//size/itemsCol*itemSize+10);
+        //this->update();
     }
 }
