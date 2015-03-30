@@ -22,15 +22,19 @@ void HexVisu::paintEvent(QPaintEvent *)
     if(this->content)
     {
         QPainter painter(this);
-        QPen framepen(Qt::red);
+        QPen framepen(Qt::white);
+        QPen asciipen(Qt::red);
         framepen.setWidth(1);
 
         QFont font=painter.font() ;
         font.setPointSize ( 12 );
         font.setWeight(QFont::DemiBold);
+
+
+
         painter.setFont(font);
         painter.setPen(framepen);
-        painter.setBrush(Qt::red);
+        painter.setBrush(Qt::white);
 
         QString hexValue;
         QString charValue;
@@ -54,7 +58,10 @@ void HexVisu::paintEvent(QPaintEvent *)
 
                     hexValue = QString::number( characterInt ,16).toUpper();
                     if(characterInt > 32 && characterInt < 125)
+                    {
                         charValue = this->content[baseIndex+j*16+i];
+                        painter.setPen(asciipen);
+                    }
                     else
                         charValue = ".";
 
@@ -63,6 +70,7 @@ void HexVisu::paintEvent(QPaintEvent *)
 
                     painter.drawText(20*i, j*30+30, hexValue);
                     painter.drawText(20*i+350, j*30+30, charValue);
+                    painter.setPen(framepen);
                 }
             }
         }
