@@ -6,15 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
+    <width>1200</width>
     <height>700</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>0</height>
+   </size>
   </property>
   <property name="palette">
    <palette>
@@ -514,7 +520,7 @@ QTabWidget::tab-bar {
  }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_vis">
        <attribute name="title">
@@ -712,9 +718,21 @@ QTabWidget::tab-bar {
             <property name="title">
              <string>View</string>
             </property>
-            <layout class="QGridLayout" name="gridLayout_10">
-             <item row="0" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
               <widget class="QScrollArea" name="scrollArea">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>120</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="verticalScrollBarPolicy">
                 <enum>Qt::ScrollBarAsNeeded</enum>
                </property>
@@ -732,12 +750,12 @@ QTabWidget::tab-bar {
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>550</width>
+                  <width>120</width>
                   <height>338</height>
                  </rect>
                 </property>
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Ignored">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -758,6 +776,22 @@ QTabWidget::tab-bar {
                  </item>
                 </layout>
                </widget>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
               </widget>
              </item>
             </layout>
@@ -3726,8 +3760,8 @@ QTabWidget::tab-bar {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
-     <height>29</height>
+     <width>1200</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

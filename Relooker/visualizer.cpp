@@ -75,20 +75,20 @@ void Visualizer::paintTwoD()
            switch(items[i])
            {
                 case 0:
-                        framepen.setColor(Qt::white);
-                        painter.setBrush(Qt::white);
-                        break;
-                case 1:
                         framepen.setColor(Qt::black);
                         painter.setBrush(Qt::black);
                         break;
-                case 2:
-                        framepen.setColor(Qt::red);
-                        painter.setBrush(Qt::red);
+                case 1:
+                        framepen.setColor(Qt::white);
+                        painter.setBrush(Qt::white);
                         break;
-                case 3:
+                case 2:
                         framepen.setColor(Qt::blue);
                         painter.setBrush(Qt::blue);
+                        break;
+                case 3:
+                        framepen.setColor(Qt::green);
+                        painter.setBrush(Qt::green);
                         break;
                 case 4:
                         framepen.setColor(Qt::magenta);
