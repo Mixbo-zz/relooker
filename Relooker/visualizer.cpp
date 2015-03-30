@@ -30,6 +30,7 @@ void Visualizer::set2(TwoDimension* tdim)
 {
     this->tdim = tdim;
 }
+
 void Visualizer::paintDefault()
 {
     QPainter painter(this);

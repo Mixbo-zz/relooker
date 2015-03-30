@@ -40,9 +40,13 @@ void MainWindow::on_actionOpen_triggered()
 	    ui->labelSizeValue->setText(QString::number(size)+" Bytes");
 
         tdim = new TwoDimension(binaire->getContent(),size);
-        ui->scrollAreaWidgetContents->resize(ui->scrollArea->size());
+
         ui->visuWidget->set2(tdim);
         ui->visuWidget->setMode(1);
+
+        QSize sizeScroll = QSize(ui->scrollArea->width(),ui->visuWidget->height());
+        ui->scrollAreaWidgetContents->resize(sizeScroll);
+
         ui->visuWidget->update();
     }
 }
