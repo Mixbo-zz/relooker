@@ -24,7 +24,8 @@ void HexVisu::paintEvent(QPaintEvent *)
         framepen.setWidth(1);
 
         QFont font=painter.font() ;
-        font.setPointSize ( 12 );
+        //font.setPointSize ( 8 );
+        font.setPixelSize(10);
         font.setWeight(QFont::DemiBold);
 
 
