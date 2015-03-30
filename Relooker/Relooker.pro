@@ -16,11 +16,13 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     fichier.cpp \
     twodimension.cpp \
-    visualizer.cpp
+    visualizer.cpp \
+    hexvisu.cpp
 
 HEADERS  += mainwindow.h \
     fichier.h \
     twodimension.h \
-    visualizer.h
+    visualizer.h \
+    hexvisu.h
 
 FORMS    += mainwindow.ui

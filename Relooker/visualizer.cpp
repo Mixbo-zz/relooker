@@ -5,6 +5,8 @@ using namespace std;
 Visualizer::Visualizer(QWidget *parent) :
     QWidget(parent)
 {
+    setMouseTracking(true);
+
     this->mode = 0;
     this->tdim = NULL;
     this->itemsCol = 16;
@@ -43,6 +45,21 @@ void Visualizer::paintEvent(QPaintEvent *)
                     break;
     } 
 }
+void Visualizer::mouseMoveEvent(QMouseEvent* event)
+{
+    int x = event->x();
+    int y = event->y();
+    //cout << x << ":" << y << endl;
+    int index = x/5 + y/5*16;
+    //cout << index<<endl;
+    this->index = index;
+}
+
+int Visualizer::getIndex()
+{
+    return this->index;
+}
+
 void Visualizer::set2(TwoDimension* tdim)
 {
     this->tdim = tdim;

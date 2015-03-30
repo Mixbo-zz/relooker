@@ -792,6 +792,11 @@ QTabWidget::tab-bar {
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
                </property>
+               <layout class="QGridLayout" name="gridLayout_10">
+                <item row="0" column="0">
+                 <widget class="HexVisu" name="hexVisuWidget" native="true"/>
+                </item>
+               </layout>
               </widget>
              </item>
             </layout>
@@ -3797,6 +3802,12 @@ QTabWidget::tab-bar {
    <class>Visualizer</class>
    <extends>QWidget</extends>
    <header>visualizer.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>HexVisu</class>
+   <extends>QWidget</extends>
+   <header>hexvisu.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

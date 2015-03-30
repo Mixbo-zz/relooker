@@ -41,6 +41,8 @@ void MainWindow::on_actionOpen_triggered()
 
         tdim = new TwoDimension(binaire->getContent(),size);
 
+        ui->hexVisuWidget->setContent(binaire->getContent(),size);
+
         ui->visuWidget->set2(tdim);
         ui->visuWidget->setMode(1);
 
@@ -49,6 +51,9 @@ void MainWindow::on_actionOpen_triggered()
 
         ui->visuWidget->update();
 
+        QTimer *timer = new QTimer(this);
+        connect(timer, SIGNAL(timeout()), this, SLOT(update_hex_view()));
+        timer->start(1000);
     }
 }
 
@@ -58,4 +63,10 @@ void MainWindow::on_actionAbout_triggered()
                              tr("RElooker"),
                              tr("Created by Alex Bouffard\nhttps://www.github.com/mixbo/relooker")
                              );
+}
+
+void MainWindow::update_hex_view()
+{
+    //cout << "Updating hex" << endl;
+    ui->hexVisuWidget->setIndex(ui->visuWidget->getIndex());
 }
