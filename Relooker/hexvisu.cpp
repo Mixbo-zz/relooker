@@ -37,6 +37,11 @@ void HexVisu::paintEvent(QPaintEvent *)
 
         QString hexValue;
         QString charValue;
+        QString hexAddress;
+
+        int num = QString::number(this->size,16).size();
+        int diff = 0;
+
         int baseIndex = this->index;
         int characterInt;
 
@@ -51,9 +56,9 @@ void HexVisu::paintEvent(QPaintEvent *)
         {
             for(int i = 0;i<16;++i)
             {
-                if(i < this->size)
+                if(i+j*16 < this->size)
                 {
-                    cout << baseIndex+j*16+i << endl;
+                    //cout << baseIndex+j*16+i << endl;
                     characterInt = (int)(unsigned char)this->content[baseIndex+j*16+i];
 
                     hexValue = QString::number( characterInt ,16).toUpper();
@@ -68,11 +73,18 @@ void HexVisu::paintEvent(QPaintEvent *)
                     if (hexValue.size() == 1)
                         hexValue = "0"+hexValue;
 
-                    painter.drawText(20*i, j*30+30, hexValue);
-                    painter.drawText(20*i+350, j*30+30, charValue);
+                    painter.drawText(20*i+70, j*30+30, hexValue);
+                    painter.drawText(10*i+400, j*30+30, charValue);
                     painter.setPen(framepen);
                 }
             }
+            hexAddress = QString::number(baseIndex+16*j,16);
+            diff = num-hexAddress.size();
+
+            for(int i = 0;i<diff;++i)
+                hexAddress = "0"+hexAddress;
+            hexAddress = "0x"+hexAddress;
+            painter.drawText(1,j*30+30,hexAddress);
         }
     }
 }
