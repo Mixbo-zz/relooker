@@ -24,6 +24,8 @@ private slots:
     void on_verticalTabsList_currentRowChanged(int currentRow);
     void on_actionOpen_triggered();
     void on_actionAbout_triggered();
+    void on_comboBox_mode_currentIndexChanged(int index);
+
 public slots:
     void update_hex_view();
 

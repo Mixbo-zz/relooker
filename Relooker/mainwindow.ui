@@ -720,83 +720,95 @@ QTabWidget::tab-bar {
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_4">
              <item>
-              <widget class="QScrollArea" name="scrollArea">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
+              <widget class="QStackedWidget" name="stackedView">
+               <property name="currentIndex">
+                <number>0</number>
                </property>
-               <property name="maximumSize">
-                <size>
-                 <width>120</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="verticalScrollBarPolicy">
-                <enum>Qt::ScrollBarAsNeeded</enum>
-               </property>
-               <property name="horizontalScrollBarPolicy">
-                <enum>Qt::ScrollBarAlwaysOff</enum>
-               </property>
-               <property name="widgetResizable">
-                <bool>false</bool>
-               </property>
-               <widget class="QWidget" name="scrollAreaWidgetContents">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="geometry">
-                 <rect>
-                  <x>0</x>
-                  <y>0</y>
-                  <width>120</width>
-                  <height>338</height>
-                 </rect>
-                </property>
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Ignored">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_11">
-                 <property name="sizeConstraint">
-                  <enum>QLayout::SetMinAndMaxSize</enum>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="Visualizer" name="visuWidget" native="true">
+               <widget class="QWidget" name="page_2d">
+                <layout class="QHBoxLayout" name="horizontalLayout_5">
+                 <item>
+                  <widget class="QScrollArea" name="scrollArea">
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>120</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="verticalScrollBarPolicy">
+                    <enum>Qt::ScrollBarAsNeeded</enum>
+                   </property>
+                   <property name="horizontalScrollBarPolicy">
+                    <enum>Qt::ScrollBarAlwaysOff</enum>
+                   </property>
+                   <property name="widgetResizable">
+                    <bool>false</bool>
+                   </property>
+                   <widget class="QWidget" name="scrollAreaWidgetContents">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="geometry">
+                     <rect>
+                      <x>0</x>
+                      <y>0</y>
+                      <width>120</width>
+                      <height>338</height>
+                     </rect>
+                    </property>
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Ignored">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_11">
+                     <property name="sizeConstraint">
+                      <enum>QLayout::SetMinAndMaxSize</enum>
+                     </property>
+                     <item row="0" column="0">
+                      <widget class="Visualizer" name="visuWidget" native="true">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_10">
+                    <item row="0" column="0">
+                     <widget class="HexVisu" name="hexVisuWidget" native="true"/>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                 </layout>
                </widget>
-              </widget>
-             </item>
-             <item>
-              <widget class="QFrame" name="frame">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-               <layout class="QGridLayout" name="gridLayout_10">
-                <item row="0" column="0">
-                 <widget class="HexVisu" name="hexVisuWidget" native="true"/>
-                </item>
-               </layout>
+               <widget class="QWidget" name="page_3d"/>
               </widget>
              </item>
             </layout>

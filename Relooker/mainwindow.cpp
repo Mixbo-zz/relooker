@@ -70,3 +70,8 @@ void MainWindow::update_hex_view()
     //cout << "Updating hex" << endl;
     ui->hexVisuWidget->setIndex(ui->visuWidget->getIndex());
 }
+
+void MainWindow::on_comboBox_mode_currentIndexChanged(int index)
+{
+    ui->stackedView->setCurrentIndex(index);
+}
