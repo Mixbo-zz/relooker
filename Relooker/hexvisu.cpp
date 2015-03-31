@@ -68,7 +68,7 @@ void HexVisu::paintEvent(QPaintEvent *)
                     characterInt = (int)(unsigned char)this->content[baseIndex+j*16+i]; // The read character as a number
 
                     hexValue = QString::number( characterInt ,16).toUpper(); // Converted to hex
-                    if(characterInt > 32 && characterInt < 125) // If ASCII
+                    if(characterInt == 9 || characterInt == 10 || characterInt == 13 ||(characterInt >= 32 && characterInt <= 127)) // If ASCII
                     {
                         charValue = this->content[baseIndex+j*16+i]; // Display Character instead of "."
                         if(this->isHighlight)
