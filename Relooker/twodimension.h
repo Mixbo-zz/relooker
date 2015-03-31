@@ -5,11 +5,13 @@
 class TwoDimension
 {
 public:
-    TwoDimension(char*,int);
+    TwoDimension();
+    void setContent(char *,int);
+    int * getArray(int);
     int * getRange();
+    int * getEntropy();
     int getSize();
 private:
-    int * range;
     char * content;
     int size;
 };

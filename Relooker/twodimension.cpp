@@ -5,11 +5,32 @@
 
 using namespace std;
 
-TwoDimension::TwoDimension(char* content, int size)
+TwoDimension::TwoDimension()
+{
+    this->content = NULL;
+    this->size = 0;
+}
+void TwoDimension::setContent(char * content,int size)
 {
     this->content = content;
     this->size = size;
 }
+
+int *TwoDimension::getArray(int mode)
+{
+    int* returnValue;
+    switch (mode)
+    {
+        case 1:
+            returnValue = this->getRange();
+            break;
+        case 2:
+            returnValue = this->getEntropy();
+            break;
+    }
+    return returnValue;
+}
+
 int TwoDimension::getSize()
 {
     return size;
@@ -43,4 +64,12 @@ int * TwoDimension::getRange()
     }
     return range;
 
+}
+
+int *TwoDimension::getEntropy()
+{
+    int * entropy = new int[this->size];
+    for(int i=0;i<this->size;++i)
+        entropy[i] = 3;
+    return entropy;
 }

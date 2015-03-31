@@ -8,6 +8,7 @@ HexVisu::HexVisu(QWidget *parent) :
 {
     this->content = NULL;
     this->index = 0;
+    this->isHighlight = false;
 }
 
 void HexVisu::setContent(char *content,int size)
@@ -15,6 +16,11 @@ void HexVisu::setContent(char *content,int size)
     this->content = content;
     this->index = 0;
     this->size = size;
+}
+
+void HexVisu::highlight(bool checked)
+{
+    this->isHighlight = checked;
 }
 
 void HexVisu::paintEvent(QPaintEvent *)
@@ -65,7 +71,8 @@ void HexVisu::paintEvent(QPaintEvent *)
                     if(characterInt > 32 && characterInt < 125)
                     {
                         charValue = this->content[baseIndex+j*16+i];
-                        painter.setPen(asciipen);
+                        if(this->isHighlight)
+                            painter.setPen(asciipen);
                     }
                     else
                         charValue = ".";

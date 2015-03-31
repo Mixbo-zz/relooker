@@ -7,7 +7,7 @@ Visualizer::Visualizer(QWidget *parent) :
 {
     setMouseTracking(true);
 
-    this->mode = 0;
+    this->mode = -1;
     this->tdim = NULL;
     this->index = 0;
     this->itemsCol = 16;
@@ -18,7 +18,7 @@ int Visualizer::getHeight()
 {
     int height = 0;
 
-    if(this->mode == 1)
+    if(this->mode != -1)
     {
         if(this->tdim)
         {
@@ -32,19 +32,17 @@ int Visualizer::getHeight()
 void Visualizer::setMode(int mode)
 {
     this->mode = mode;
+    this->update();
 }
 
 void Visualizer::paintEvent(QPaintEvent *)
 {
-    switch(this->mode)
+    if(this->tdim)
     {
-            case 0:
-                    this->paintDefault();
-                    break;
-            case 1:
-                    this->paintTwoD();
-                    break;
-    } 
+        this->paintTwoD();
+    }
+    else
+        this->paintDefault();
 }
 void Visualizer::mouseMoveEvent(QMouseEvent* event)
 {
@@ -82,9 +80,8 @@ void Visualizer::paintTwoD()
 {
     if(this->tdim)
     {
-        int * items = this->tdim->getRange();
+        int * items = this->tdim->getArray(this->mode); // Will change to get(mode). getRange() will become private
         int size = this->tdim->getSize();
-        //this->resize(this->width(),size/itemsCol*itemSize+50);//size/itemsCol*itemSize+10);
 
         QPainter painter(this);
         QPen framepen(Qt::black);
@@ -117,8 +114,5 @@ void Visualizer::paintTwoD()
            painter.setPen(framepen);
            painter.drawRect(i%this->itemsCol * this->itemSize /*+ 2*i%itemsCol*/,i/this->itemsCol*this->itemSize,this->itemSize,this->itemSize);
         }
-
-        //this->resize(this->width(),size/itemsCol*itemSize+50);//size/itemsCol*itemSize+10);
-        //this->update();
     }
 }

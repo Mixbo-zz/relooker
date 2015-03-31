@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->binaire = NULL;
+    this->tdim = new TwoDimension();
 }
 
 MainWindow::~MainWindow()
@@ -33,13 +35,16 @@ void MainWindow::on_actionOpen_triggered()
     QString filename = QFileDialog::getOpenFileName(this,tr("Open File"),"./","All Files (*.*)");
     if(!filename.isEmpty())
     {
-        binaire = new Fichier(filename.toUtf8().constData());
+        this->binaire = new Fichier(filename.toUtf8().constData());
 	    int size = binaire->getSize();
+
+        ui->comboBox_mode->setCurrentIndex(0);
+        ui->comboBox_algo->setCurrentIndex(0);
 
 	    ui->labelNameValue->setText(filename);
 	    ui->labelSizeValue->setText(QString::number(size)+" Bytes");
 
-        tdim = new TwoDimension(binaire->getContent(),size);
+        this->tdim->setContent(this->binaire->getContent(),size);
 
         ui->hexVisuWidget->setContent(binaire->getContent(),size);
 
@@ -74,4 +79,14 @@ void MainWindow::update_hex_view()
 void MainWindow::on_comboBox_mode_currentIndexChanged(int index)
 {
     ui->stackedView->setCurrentIndex(index);
+}
+
+void MainWindow::on_checkBox_strings_toggled(bool checked)
+{
+    ui->hexVisuWidget->highlight(checked);
+}
+
+void MainWindow::on_comboBox_algo_currentIndexChanged(int index)
+{
+    ui->visuWidget->setMode(index+1);
 }
