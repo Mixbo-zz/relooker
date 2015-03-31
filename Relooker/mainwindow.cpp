@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->binaire = NULL;
     this->tdim = new TwoDimension();
+    ui->hexEditWidget->setColumnCount(32);
 }
 
 MainWindow::~MainWindow()

@@ -12,3 +12,5 @@ Relooker/Relooker.app/*
 *.lproj
 
 Relooker/ui_mainwindow.h
+
+Relooker/Relooker.pro.*
