@@ -8,13 +8,13 @@ RElooker is a simple Reverse Engineering software designed to visualize binary i
 * 2D Visualization
   * Value range (Null,FF,Low,High,Ascii)
 * Hex Viewer
+* String Highlight
 
 ## ToDo
 * Entropy Viewer
 * Call Structure Viewer
 * Media listing
 * 3D Viewer (!)
-* String Highlight
 * Create Editors
   * Hex Editor
   * Strings Editor
