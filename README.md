@@ -1,10 +1,11 @@
 # RElooker
 
-RElooker is a simple Reverse Engineering software designed to visualize binary information with colorful representations and stats.
+RElooker is a simple Reverse Engineering software designed to visualize binary information with colorful representations and stats. It is 100% cross platform (even if the formatting sometimes sucks).
 
 Basic editing will also be possible sooner or later.
 
-100% cross platform, most features are also structure independant.
+## Which files can I analyze?
+Anything. Most features are structure independant and interpret the actual content of the file instead of relying on headers and/or prior knowledge. Open any file -> What you see is what you get.
 
 ![Screenshot](http://wakowakowako.com/mixbo/3_screen.png)
 
