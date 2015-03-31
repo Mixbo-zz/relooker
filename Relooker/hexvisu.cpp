@@ -1,4 +1,5 @@
 #include "hexvisu.h"
+#include <iostream>
 #include <QPainter>
 
 using namespace std;
@@ -6,11 +7,13 @@ HexVisu::HexVisu(QWidget *parent) :
     QWidget(parent)
 {
     this->content = NULL;
+    this->index = 0;
 }
 
 void HexVisu::setContent(char *content,int size)
 {
     this->content = content;
+    this->index = 0;
     this->size = size;
 }
 
@@ -27,8 +30,6 @@ void HexVisu::paintEvent(QPaintEvent *)
         //font.setPointSize ( 8 );
         font.setPixelSize(10);
         font.setWeight(QFont::DemiBold);
-
-
 
         painter.setFont(font);
         painter.setPen(framepen);
@@ -52,6 +53,7 @@ void HexVisu::paintEvent(QPaintEvent *)
             {
                 if(i < this->size)
                 {
+                    cout << baseIndex+j*16+i << endl;
                     characterInt = (int)(unsigned char)this->content[baseIndex+j*16+i];
 
                     hexValue = QString::number( characterInt ,16).toUpper();

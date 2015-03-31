@@ -11,7 +11,7 @@ class Visualizer : public QWidget
 public:
     explicit Visualizer(QWidget *parent = 0);
     void setMode(int);
-    void mouseMoveEvent(QMouseEvent*);
+    virtual void mouseMoveEvent(QMouseEvent*);
     void set2(TwoDimension*);
     int getHeight();
     int getIndex();

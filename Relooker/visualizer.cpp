@@ -9,6 +9,7 @@ Visualizer::Visualizer(QWidget *parent) :
 
     this->mode = 0;
     this->tdim = NULL;
+    this->index = 0;
     this->itemsCol = 16;
     this->itemSize = 5;
 }
@@ -63,6 +64,7 @@ int Visualizer::getIndex()
 void Visualizer::set2(TwoDimension* tdim)
 {
     this->tdim = tdim;
+    this->index = 0;
 }
 
 void Visualizer::paintDefault()
