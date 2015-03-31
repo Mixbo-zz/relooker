@@ -90,5 +90,13 @@ void MainWindow::on_checkBox_strings_toggled(bool checked)
 
 void MainWindow::on_comboBox_algo_currentIndexChanged(int index)
 {
+    if(index > 1)
+    {
+        QMessageBox::information(this,
+                             tr("RElooker"),
+                             tr("Missing Feature")
+                             );
+  
+    } 
     ui->visuWidget->setMode(index+1); // Set mode to the combo box index+1 because why not
 }
