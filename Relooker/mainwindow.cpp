@@ -32,7 +32,7 @@ void MainWindow::on_verticalTabsList_currentRowChanged(int currentRow)
 
 void MainWindow::on_actionOpen_triggered()
 {
-    QString filename = QFileDialog::getOpenFileName(this,tr("Open File"),"./","All Files (*.*)");
+    QString filename = QFileDialog::getOpenFileName(this,tr("Open File"),"./","All Files (*)");
     if(!filename.isEmpty())
     {
         QString title = "RElooker - "+filename; // Include filename in window's title
