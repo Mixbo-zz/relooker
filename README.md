@@ -2,6 +2,8 @@
 
 RElooker is a simple Reverse Engineering software designed to visualize binary information with colorful representations and stats. Basic editing is also possible.
 
+100% cross platform, most features are also structure independant.
+
 ![Screenshot](http://wakowakowako.com/mixbo/3_screen.png)
 
 ## Currently Working
@@ -21,3 +23,5 @@ RElooker is a simple Reverse Engineering software designed to visualize binary i
   * Ressources Editor
   * Disassembly Editor (!)
 * Add Graphic Stats (Pie Charts!)
+
+Visit [the wiki](https://github.com/Mixbo/relooker/wiki) for more informations on which features are being developped.
