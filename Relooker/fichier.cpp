@@ -15,14 +15,14 @@ void Fichier::openFile()
 {
 	streampos size;
 
-	ifstream file (this->path.c_str(), ios::in|ios::binary|ios::ate);
+    ifstream file (this->path.c_str(), ios::in|ios::binary|ios::ate); // Open file
 	if (file.is_open())
 	{
-	    size = file.tellg();
+        size = file.tellg(); // Get Size
 		this->size = size;
 	    content = new char [size];
 	    file.seekg (0, ios::beg);
-	    file.read (content, size);
+        file.read (content, size); // Read file
 	    file.close();
 	}
 }

@@ -16,16 +16,16 @@ void TwoDimension::setContent(char * content,int size)
     this->size = size;
 }
 
-int *TwoDimension::getArray(int mode)
+int *TwoDimension::getArray(int mode) // Ask for array of type mode
 {
     int* returnValue;
     switch (mode)
     {
         case 1:
-            returnValue = this->getRange();
+            returnValue = this->getRange(); // get byte range representation
             break;
         case 2:
-            returnValue = this->getEntropy();
+            returnValue = this->getEntropy(); // get entropy representation
             break;
     }
     return returnValue;
@@ -49,13 +49,13 @@ int * TwoDimension::getRange()
         //cout << c << ":" << b << endl;
         //cout << uppercase << setw(2) << setfill('0')<< hex << int(b) << endl;
 
-        if(b != 0) // 0 = white
+        if(b != 0) // null byte = black
         {
-            if(b == 255)// FF = black
+            if(b == 255)// FF = white
                 value = 1;
-            else if(b == 9 || b == 10 || b == 13 || (b >= 32 && b <= 127)) // ASCII = Red
+            else if(b == 9 || b == 10 || b == 13 || (b >= 32 && b <= 127)) // ASCII = Blue
                 value = 2;
-            else if(b < 32) // Low Byte = Blue
+            else if(b < 32) // Low Byte = Green
                 value = 3;
             else if(b > 127) // High Byte = Magenta
                 value = 4;
@@ -66,7 +66,7 @@ int * TwoDimension::getRange()
 
 }
 
-int *TwoDimension::getEntropy()
+int *TwoDimension::getEntropy() // Returns color matrix representing entropy (not implemented)
 {
     int * entropy = new int[this->size];
     for(int i=0;i<this->size;++i)

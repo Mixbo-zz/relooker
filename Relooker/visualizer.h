@@ -18,14 +18,14 @@ public:
 protected:
     void paintEvent(QPaintEvent *);
 private:
-    int mode;
-    int itemsCol;
-    int itemSize;
-    int index;
-    TwoDimension* tdim;
+    int mode; // The algorithm to use in representation
+    int itemsCol; // Number of items per column -> Ghettoed to 16
+    int itemSize; // Size of each dots -> Ghettoed to 5
+    int index; // Where the cursor is
+    TwoDimension* tdim; // 2dimensions representation of file
 
     void paintDefault();
-    void paintTwoD();
+    void paintTwoD(); // display the 2 dimensions representation with the algorithm this->mode
 signals:
     
 public slots:

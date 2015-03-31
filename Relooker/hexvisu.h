@@ -9,11 +9,11 @@ class HexVisu : public QWidget
 public:
     explicit HexVisu(QWidget *parent = 0);
     void setContent(char*,int);
-    void highlight(bool);
+    void highlight(bool);    // Highlight Strings
 protected:
     void paintEvent(QPaintEvent *);
 private:
-    int index;
+    int index; // Value hovered by cursor
     int size;
     char* content;
     bool isHighlight;

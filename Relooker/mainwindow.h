@@ -25,9 +25,7 @@ private slots:
     void on_actionOpen_triggered();
     void on_actionAbout_triggered();
     void on_comboBox_mode_currentIndexChanged(int index);
-
     void on_checkBox_strings_toggled(bool checked);
-
     void on_comboBox_algo_currentIndexChanged(int index);
 
 public slots:
@@ -36,7 +34,7 @@ public slots:
 private:
     Ui::MainWindow *ui;
     Fichier *binaire;
-    TwoDimension* tdim;
+    TwoDimension* tdim; // The Two Dimension Representation (with multiple algorithms)
 };
 
 #endif // MAINWINDOW_H

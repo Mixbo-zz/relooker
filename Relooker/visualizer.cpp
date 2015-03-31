@@ -7,14 +7,14 @@ Visualizer::Visualizer(QWidget *parent) :
 {
     setMouseTracking(true);
 
-    this->mode = -1;
+    this->mode = -1; // Set mode to unset
     this->tdim = NULL;
     this->index = 0;
     this->itemsCol = 16;
     this->itemSize = 5;
 }
 
-int Visualizer::getHeight()
+int Visualizer::getHeight() // Height of the 2d representation used to resize widget
 {
     int height = 0;
 
@@ -42,7 +42,7 @@ void Visualizer::paintEvent(QPaintEvent *)
         this->paintTwoD();
     }
     else
-        this->paintDefault();
+        this->paintDefault(); // At the opening. Show default screen
 }
 void Visualizer::mouseMoveEvent(QMouseEvent* event)
 {
@@ -65,7 +65,7 @@ void Visualizer::set2(TwoDimension* tdim)
     this->index = 0;
 }
 
-void Visualizer::paintDefault()
+void Visualizer::paintDefault() // Default screen
 {
     QPainter painter(this);
     QPen framepen(Qt::red);
@@ -76,11 +76,11 @@ void Visualizer::paintDefault()
     painter.drawRect(1,1,5,5);
 }
 
-void Visualizer::paintTwoD()
+void Visualizer::paintTwoD() // Paint the 2 dimentional representation
 {
     if(this->tdim)
     {
-        int * items = this->tdim->getArray(this->mode); // Will change to get(mode). getRange() will become private
+        int * items = this->tdim->getArray(this->mode);
         int size = this->tdim->getSize();
 
         QPainter painter(this);
@@ -111,6 +111,7 @@ void Visualizer::paintTwoD()
                         painter.setBrush(Qt::magenta);
                         break;
            }
+           // paint each square
            painter.setPen(framepen);
            painter.drawRect(i%this->itemsCol * this->itemSize /*+ 2*i%itemsCol*/,i/this->itemsCol*this->itemSize,this->itemSize,this->itemSize);
         }
