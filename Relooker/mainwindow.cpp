@@ -35,6 +35,8 @@ void MainWindow::on_actionOpen_triggered()
     QString filename = QFileDialog::getOpenFileName(this,tr("Open File"),"./","All Files (*.*)");
     if(!filename.isEmpty())
     {
+        QString title = "RElooker - "+filename;
+        this->setWindowTitle(title);
         this->binaire = new Fichier(filename.toUtf8().constData());
 	    int size = binaire->getSize();
 
