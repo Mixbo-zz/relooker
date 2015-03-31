@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1100</width>
-    <height>700</height>
+    <width>1000</width>
+    <height>625</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,8 +18,8 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>1100</width>
-    <height>0</height>
+    <width>1000</width>
+    <height>625</height>
    </size>
   </property>
   <property name="palette">
@@ -3765,7 +3765,7 @@ QTabWidget::tab-bar {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1100</width>
+     <width>1000</width>
      <height>22</height>
     </rect>
    </property>
