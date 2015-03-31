@@ -91,7 +91,7 @@ void HexVisu::paintEvent(QPaintEvent *)
             for(int i = 0;i<diff;++i)
                 hexAddress = "0"+hexAddress;
             hexAddress = "0x"+hexAddress;
-            painter.drawText(1,j*30+30,hexAddress);
+            painter.drawText(1,j*30+30,hexAddress.toUpper());
         }
     }
 }
