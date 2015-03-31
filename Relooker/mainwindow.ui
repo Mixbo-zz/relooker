@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
+    <width>1150</width>
     <height>625</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>1000</width>
+    <width>1150</width>
     <height>625</height>
    </size>
   </property>
@@ -520,7 +520,7 @@ QTabWidget::tab-bar {
  }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_vis">
        <attribute name="title">
@@ -3852,7 +3852,7 @@ QTabWidget::tab-bar {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
+     <width>1150</width>
      <height>22</height>
     </rect>
    </property>
