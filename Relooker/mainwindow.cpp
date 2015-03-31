@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include <QFileDialog>
+#include <QScrollBar>
 #include <QMessageBox>
 
 using namespace std;
@@ -12,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->binaire = NULL;
     this->tdim = new TwoDimension();
-    ui->hexEditWidget->setColumnCount(32);
 }
 
 MainWindow::~MainWindow()
@@ -57,12 +57,52 @@ void MainWindow::on_actionOpen_triggered()
         QSize sizeScroll = QSize(ui->scrollArea->width(),ui->visuWidget->getHeight()); // Resize the scroll area to show the scrollbar
         ui->scrollAreaWidgetContents->resize(sizeScroll);
 
+        this->setHexEditor();
+
         ui->visuWidget->update();
 
         QTimer *timer = new QTimer(this);
         connect(timer, SIGNAL(timeout()), this, SLOT(update_hex_view())); // Refresh hex view every 100ms
         timer->start(100);
     }
+}
+void MainWindow::setHexEditor()
+{
+    connect(ui->hexEditWidget->verticalScrollBar(), SIGNAL(valueChanged(int)), ui->hexEditAsciiWidget->verticalScrollBar(), SLOT(setValue(int)));
+    connect(ui->hexEditAsciiWidget->verticalScrollBar(), SIGNAL(valueChanged(int)), ui->hexEditWidget->verticalScrollBar(), SLOT(setValue(int)));
+    ui->hexEditWidget->setColumnCount(16);
+    ui->hexEditAsciiWidget->setColumnCount(16);
+
+    for(int i=0;i<16;++i)
+        ui->hexEditWidget->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::number(i,16).toUpper()));
+    for(int i=0;i<16;++i)
+        ui->hexEditAsciiWidget->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::number(i,16).toUpper()));
+
+    ui->hexEditWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+    ui->hexEditAsciiWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+
+    int hexEditorSize = ui->visuWidget->getHeight()-50/5;
+    ui->hexEditWidget->setRowCount(hexEditorSize);
+    ui->hexEditAsciiWidget->setRowCount(hexEditorSize);
+
+    QString hexAddress;
+
+    int num = QString::number(hexEditorSize,16).toUpper().size();
+    int diff = 0;
+
+
+    for(int i=0;i<hexEditorSize;++i)
+    {
+        hexAddress = QString::number(i*16,16).toUpper();
+        diff = num-hexAddress.size();
+        for(int j=0;j<diff;++j)
+            hexAddress = "0"+hexAddress;
+        ui->hexEditWidget->setVerticalHeaderItem(i, new QTableWidgetItem(hexAddress));
+        ui->hexEditAsciiWidget->setVerticalHeaderItem(i, new QTableWidgetItem(""));
+    }
+
+    ui->hexEditWidget->verticalHeader()->setResizeMode(QHeaderView::Stretch);
+    ui->hexEditAsciiWidget->verticalHeader()->setResizeMode(QHeaderView::Stretch);
 }
 
 void MainWindow::on_actionAbout_triggered()

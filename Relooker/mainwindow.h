@@ -32,6 +32,7 @@ public slots:
     void update_hex_view();
 
 private:
+    void setHexEditor();
     Ui::MainWindow *ui;
     Fichier *binaire;
     TwoDimension* tdim; // The Two Dimension Representation (with multiple algorithms)
