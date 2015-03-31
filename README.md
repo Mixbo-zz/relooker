@@ -1,6 +1,8 @@
 # RElooker
 
-RElooker is a simple Reverse Engineering software designed to visualize binary information with colorful representations and stats. Basic editing is also possible.
+RElooker is a simple Reverse Engineering software designed to visualize binary information with colorful representations and stats.
+
+Basic editing will also be possible sooner or later.
 
 100% cross platform, most features are also structure independant.
 
