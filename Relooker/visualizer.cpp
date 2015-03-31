@@ -67,13 +67,7 @@ void Visualizer::set2(TwoDimension* tdim)
 
 void Visualizer::paintDefault() // Default screen
 {
-    QPainter painter(this);
-    QPen framepen(Qt::red);
-    framepen.setWidth(1);
 
-    painter.setPen(framepen);
-    painter.setBrush(Qt::red);
-    painter.drawRect(1,1,5,5);
 }
 
 void Visualizer::paintTwoD() // Paint the 2 dimentional representation
