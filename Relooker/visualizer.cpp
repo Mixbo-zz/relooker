@@ -76,38 +76,40 @@ void Visualizer::paintTwoD() // Paint the 2 dimentional representation
     {
         int * items = this->tdim->getArray(this->mode);
         int size = this->tdim->getSize();
-
-        QPainter painter(this);
-        QPen framepen(Qt::black);
-        framepen.setWidth(1);
-        for(int i = 0;i< size;++i)
+        if(items)
         {
-           switch(items[i])
-           {
-                case 0:
-                        framepen.setColor(Qt::black);
-                        painter.setBrush(Qt::black);
-                        break;
-                case 1:
-                        framepen.setColor(Qt::white);
-                        painter.setBrush(Qt::white);
-                        break;
-                case 2:
-                        framepen.setColor(Qt::blue);
-                        painter.setBrush(Qt::blue);
-                        break;
-                case 3:
-                        framepen.setColor(Qt::green);
-                        painter.setBrush(Qt::green);
-                        break;
-                case 4:
-                        framepen.setColor(Qt::magenta);
-                        painter.setBrush(Qt::magenta);
-                        break;
-           }
-           // paint each square
-           painter.setPen(framepen);
-           painter.drawRect(i%this->itemsCol * this->itemSize /*+ 2*i%itemsCol*/,i/this->itemsCol*this->itemSize,this->itemSize,this->itemSize);
+            QPainter painter(this);
+            QPen framepen(Qt::black);
+            framepen.setWidth(1);
+            for(int i = 0;i< size;++i)
+            {
+               switch(items[i])
+               {
+                    case 0:
+                            framepen.setColor(Qt::black);
+                            painter.setBrush(Qt::black);
+                            break;
+                    case 1:
+                            framepen.setColor(Qt::white);
+                            painter.setBrush(Qt::white);
+                            break;
+                    case 2:
+                            framepen.setColor(Qt::blue);
+                            painter.setBrush(Qt::blue);
+                            break;
+                    case 3:
+                            framepen.setColor(Qt::green);
+                            painter.setBrush(Qt::green);
+                            break;
+                    case 4:
+                            framepen.setColor(Qt::magenta);
+                            painter.setBrush(Qt::magenta);
+                            break;
+               }
+               // paint each square
+               painter.setPen(framepen);
+               painter.drawRect(i%this->itemsCol * this->itemSize /*+ 2*i%itemsCol*/,i/this->itemsCol*this->itemSize,this->itemSize,this->itemSize);
+            }
         }
     }
 }

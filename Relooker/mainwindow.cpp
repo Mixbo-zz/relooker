@@ -33,7 +33,7 @@ void MainWindow::on_verticalTabsList_currentRowChanged(int currentRow)
 
 void MainWindow::on_actionOpen_triggered()
 {
-    QString filename = QFileDialog::getOpenFileName(this,tr("Open File"),"./","All Files (*.*)");
+    QString filename = QFileDialog::getOpenFileName(this,tr("Open File"),"./","All Files (*)");
     if(!filename.isEmpty())
     {
         QString title = "RElooker - "+filename; // Include filename in window's title
@@ -91,5 +91,14 @@ void MainWindow::on_checkBox_strings_toggled(bool checked)
 
 void MainWindow::on_comboBox_algo_currentIndexChanged(int index)
 {
-    ui->visuWidget->setMode(index+1); // Set mode to the combo box index+1 because why not
+    if(index > 0)
+    {
+        QMessageBox::information(this,
+                             tr("RElooker"),
+                             tr("Missing Feature")
+                             );
+  
+    } 
+    else
+        ui->visuWidget->setMode(index+1); // Set mode to the combo box index+1 because why not
 }

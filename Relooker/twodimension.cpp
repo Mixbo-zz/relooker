@@ -18,7 +18,7 @@ void TwoDimension::setContent(char * content,int size)
 
 int *TwoDimension::getArray(int mode) // Ask for array of type mode
 {
-    int* returnValue;
+    int* returnValue = NULL;
     switch (mode)
     {
         case 1:
