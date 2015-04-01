@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->binaire = NULL;
     this->tdim = new TwoDimension();
 
+    ui->colorExplain->hide();
+
     /* Remove unused options*/
     ui->tabWidget->removeTab(1);
     ui->comboBox_mode->removeItem(1);
@@ -64,6 +66,7 @@ void MainWindow::on_actionOpen_triggered()
         ui->scrollAreaWidgetContents->resize(sizeScroll);
 
         ui->visuWidget->update();
+        ui->colorExplain->show();
 
         QTimer *timer = new QTimer(this);
         connect(timer, SIGNAL(timeout()), this, SLOT(update_hex_view())); // Refresh hex view every 100ms
