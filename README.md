@@ -9,7 +9,7 @@ Current release is [v0.2.1](https://github.com/Mixbo/relooker/releases/tag/v0.2.
 ## Which files can I analyze?
 Any. Most features are structure independant and interpret the actual content of the file instead of relying on headers and/or prior knowledge. What you see is what you get.
 
-![Screenshot](http://wakowakowako.com/mixbo/4_screen.png)
+![Screenshot](http://wakowakowako.com/mixbo/5_screen.png)
 
 ## Features
 #### Currently Working
