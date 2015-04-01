@@ -12,6 +12,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->binaire = NULL;
     this->tdim = new TwoDimension();
+
+    /* Remove unused options*/
+    ui->tabWidget->removeTab(1);
+    ui->comboBox_mode->removeItem(1);
+
+    for(int i=0;i<3;++i)
+        ui->comboBox_algo->removeItem(1);
 }
 
 MainWindow::~MainWindow()
