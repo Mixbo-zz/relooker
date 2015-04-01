@@ -94,7 +94,7 @@ void MainWindow::setHexEditor()
     QString hexAddress;
 
     QFont fnt;
-    fnt.setPixelSize(10);
+    fnt.setPixelSize(12);
 
     int baseIndex = ui->visuWidget->getIndex();
     int characterInt;
