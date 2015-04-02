@@ -11,6 +11,11 @@ Any. Most features are structure independant and interpret the actual content of
 
 ![Screenshot](http://wakowakowako.com/mixbo/5_screen.png)
 
+## Install
+#### Install on Linux and Mac OS X
+```
+$ ./kompile 
+```
 ## Features
 #### Currently Working
 * 2D Visualization
