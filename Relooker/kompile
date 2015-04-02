@@ -2,35 +2,35 @@
 
 function installLinux
 {
-    echo -e "\e[92m[+] Starting Installation for Linux .......\e[0m"
-    echo -e "\e[92m[+] Creating Makefile\e[0m"
+    echo -e "\x1B[92m[+] Starting Installation for Linux .......\x1B[0m"
+    echo -e "\x1B[92m[+] Creating Makefile\x1B[0m"
     qmake -r Relooker.pro
-    echo -e "\e[92m[+] Building Relooker\e[0m"
+    echo -e "\x1B[92m[+] Building Relooker\x1B[0m"
     make
-    echo -e "\e[92m[+] Installing ......\e[0m"
+    echo -e "\x1B[92m[+] Installing ......\x1B[0m"
     sudo make install
-    echo -e "\e[92m[+] Cleaning .......\e[0m"
+    echo -e "\x1B[92m[+] Cleaning .......\x1B[0m"
     make clean
-    echo -e "\e[92m[+] Done! You can now run the software by typing 'Relooker'\e[0m"
+    echo -e "\x1B[92m[+] Done! You can now run the software by typing 'Relooker'\x1B[0m"
     exit
         
 }
 function installOSX
 {
-    echo -e "\e[92m[+] Starting Installation for Mac OS X\e[0m"
-    echo -e "\e[92m[+] Creating Makefile\e[0m"
+    echo -e "\x1B[92m[+] Starting Installation for Mac OS X\x1B[0m"
+    echo -e "\x1B[92m[+] Creating Makefile\x1B[0m"
     qmake -r Relooker.pro
-    echo -e "\e[92m[+] Building Relooker\e[0m"
+    echo -e "\x1B[92m[+] Building Relooker\x1B[0m"
     make
-    echo -e "\e[92m[+] Copying Relooker.app in Applications folder\e[0m"
+    echo -e "\x1B[92m[+] Copying Relooker.app in Applications folder\x1B[0m"
     sudo cp ./Relooker.app /Applications/
-    echo -e "\e[92m[+] Cleaning .......\e[0m"
+    echo -e "\x1B[92m[+] Cleaning .......\x1B[0m"
     make clean
     exit
 }
 function help
 {
-        echo -e "\e[41m[-] An error occured\e[0m"
+        echo -e "\x1B[41m[-] An error occured\x1B[0m"
         exit
 }
 

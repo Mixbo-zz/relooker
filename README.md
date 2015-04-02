@@ -13,7 +13,7 @@ Any. Most features are structure independant and interpret the actual content of
 ## Install
 #### Install on Linux and Mac OS X
 ```
-$ bash kompile 
+$ ./kompile 
 ```
 ## Features
 #### Currently Working
