@@ -23,7 +23,7 @@ function installOSX
     echo -e "\x1B[92m[+] Building Relooker\x1B[0m"
     make
     echo -e "\x1B[92m[+] Copying Relooker.app in Applications folder\x1B[0m"
-    sudo cp ./Relooker.app /Applications/
+    sudo cp -r ./Relooker.app /Applications/
     echo -e "\x1B[92m[+] Cleaning .......\x1B[0m"
     make clean
     exit
