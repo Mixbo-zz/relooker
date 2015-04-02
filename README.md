@@ -11,6 +11,7 @@ Any. Most features are structure independant and interpret the actual content of
 ![Screenshot](http://wakowakowako.com/mixbo/3_screen.png)
 
 ## Install
+#### Linux
 ```
 $ qmake
 $ make
@@ -18,9 +19,14 @@ $ sudo make install
 ```
 If you're lazy you can:
 ```
-$ ./kompile.sh
+$ ./kompile-linux.sh
 ```
-
+#### Mac OS X
+```
+$ qmake
+$ make
+$ sudo mv ./Relooker.app /Applications/
+```
 ## Features
 #### Currently Working
 * 2D Visualization
