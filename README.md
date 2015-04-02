@@ -10,6 +10,17 @@ Any. Most features are structure independant and interpret the actual content of
 
 ![Screenshot](http://wakowakowako.com/mixbo/3_screen.png)
 
+## Install
+```
+$ qmake
+$ make
+$ sudo make install
+```
+If you're lazy you can:
+```
+$ ./kompile.sh
+```
+
 ## Features
 #### Currently Working
 * 2D Visualization

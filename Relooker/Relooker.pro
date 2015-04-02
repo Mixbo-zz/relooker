@@ -9,6 +9,7 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Relooker
+target.path = /usr/bin
 TEMPLATE = app
 
 
@@ -26,3 +27,5 @@ HEADERS  += mainwindow.h \
     hexvisu.h
 
 FORMS    += mainwindow.ui
+
+INSTALLS += target
