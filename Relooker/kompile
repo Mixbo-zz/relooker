@@ -1,0 +1,44 @@
+#!/bin/bash
+
+function installLinux
+{
+    echo -e "\e[92m[+] Starting Installation for Linux .......\e[0m"
+    echo -e "\e[92m[+] Creating Makefile\e[0m"
+    qmake -r Relooker.pro
+    echo -e "\e[92m[+] Building Relooker\e[0m"
+    make
+    echo -e "\e[92m[+] Installing ......\e[0m"
+    sudo make install
+    echo -e "\e[92m[+] Cleaning .......\e[0m"
+    make clean
+    echo -e "\e[92m[+] Done! You can now run the software by typing 'Relooker'\e[0m"
+    exit
+        
+}
+function installOSX
+{
+    echo -e "\e[92m[+] Starting Installation for Mac OS X\e[0m"
+    echo -e "\e[92m[+] Creating Makefile\e[0m"
+    qmake -r Relooker.pro
+    echo -e "\e[92m[+] Building Relooker\e[0m"
+    make
+    echo -e "\e[92m[+] Copying Relooker.app in Applications folder\e[0m"
+    sudo cp ./Relooker.app /Applications/
+    echo -e "\e[92m[+] Cleaning .......\e[0m"
+    make clean
+    exit
+}
+function help
+{
+        echo -e "\e[41m[-] An error occured\e[0m"
+        exit
+}
+
+osStr="$(uname -s)"
+if [[ "$osStr" == "Linux" ]]; then
+        installLinux
+elif [[ "$osStr" == "Darwin" ]]; then
+        installOSX
+else
+        help
+fi
