@@ -12,6 +12,9 @@ TARGET = Relooker
 target.path = /usr/bin
 TEMPLATE = app
 
+RC_ICONS = graph/RElooker.ico
+ICON = graph/RElooker.icns
+
 
 SOURCES += main.cpp\
         mainwindow.cpp \
