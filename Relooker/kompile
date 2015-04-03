@@ -4,7 +4,15 @@ function installLinux
 {
     echo -e "\x1B[92m[+] Starting Installation for Linux .......\x1B[0m"
     echo -e "\x1B[92m[+] Creating Makefile\x1B[0m"
-    qmake -r Relooker.pro
+    if haveProg qmake; then
+        qmake -r Relooker.pro
+    elif haveProg qmake-qt4; then
+        echo -e "\x1B[33m[!] Could not find qmake. Creating Makefile with qmake-qt4"
+        qmake-qt4 -r Relooker.pro
+    else
+        echo -e "\x1B[41m[-] Can't find qmake or qmake-qt4"
+        exit
+    fi
     echo -e "\x1B[92m[+] Building Relooker\x1B[0m"
     make
     echo -e "\x1B[92m[+] Installing ......\x1B[0m"
@@ -32,6 +40,10 @@ function help
 {
         echo -e "\x1B[41m[-] An error occured\x1B[0m"
         exit
+}
+function haveProg()
+{
+            [ -x "$(    which $1 2> /dev/null)" ]
 }
 
 osStr="$(uname -s)"
