@@ -51,6 +51,8 @@ void HexVisu::paintEvent(QPaintEvent *)
         int baseIndex = this->index;
         int characterInt;
 
+        bool endReached = false;
+
         baseIndex -= 64; // The base index is reduced to add context
 
         if(baseIndex < 0) // Can't go passed 0
@@ -60,11 +62,20 @@ void HexVisu::paintEvent(QPaintEvent *)
 
         for(int j = 0; j<16; ++j)
         {
+            if (!endReached)
+            {
+                hexAddress = QString::number(baseIndex+16*j,16);
+
+                diff = num-hexAddress.size();
+                for(int i = 0;i<diff;++i)       // Fill address with 0
+                    hexAddress = "0"+hexAddress;
+                hexAddress = "0x"+hexAddress;
+                painter.drawText(1,j*30+30,hexAddress.toUpper());
+            }
             for(int i = 0;i<16;++i)
             {
-                if(i+j*16 < this->size)
+                if(i+j*16+baseIndex < this->size)
                 {
-                    //cout << baseIndex+j*16+i << endl;
                     characterInt = (int)(unsigned char)this->content[baseIndex+j*16+i]; // The read character as a number
 
                     hexValue = QString::number( characterInt ,16).toUpper(); // Converted to hex
@@ -84,14 +95,9 @@ void HexVisu::paintEvent(QPaintEvent *)
                     painter.drawText(10*i+400, j*30+30, charValue);
                     painter.setPen(framepen);
                 }
+                else
+                        endReached = true;
             }
-            hexAddress = QString::number(baseIndex+16*j,16);
-
-            diff = num-hexAddress.size();
-            for(int i = 0;i<diff;++i)       // Fill address with 0
-                hexAddress = "0"+hexAddress;
-            hexAddress = "0x"+hexAddress;
-            painter.drawText(1,j*30+30,hexAddress.toUpper());
         }
     }
 }
