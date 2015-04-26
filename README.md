@@ -16,7 +16,7 @@ Any. Most features are structure independant and interpret the actual content of
 ```
 $ ./kompile 
 ```
-A few released were published with a compiled executable.
+A few releases were published with a compiled executable.
 ## Features
 #### Currently Working
 * 2D Visualization
