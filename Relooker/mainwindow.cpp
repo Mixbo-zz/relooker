@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->colorExplain->hide();
 
     /* Remove unused options*/
-    ui->tabWidget->removeTab(1);
+//    ui->tabWidget->removeTab(1);
     ui->comboBox_mode->removeItem(1);
 
     for(int i=0;i<3;++i)
