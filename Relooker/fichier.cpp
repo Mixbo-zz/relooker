@@ -7,25 +7,27 @@
 using namespace std;
 Fichier::Fichier(std::string s)
 {
+    this->size = 0;
 	this->path = s;
     this->openFile();
 }
 
 void Fichier::openFile()
 {
-	streampos size;
-
-    ifstream file (this->path.c_str(), ios::in|ios::binary|ios::ate); // Open file
-	if (file.is_open())
-	{
-        size = file.tellg(); // Get Size
-		this->size = size;
-	    content = new char [size];
-	    file.seekg (0, ios::beg);
-        file.read (content, size); // Read file
-	    file.close();
-	}
+    std::ifstream is(this->path.c_str());
+    if (is.is_open())
+    {
+        is.seekg(0, std::ios_base::end);
+        std::size_t size=is.tellg();
+         this->size = size;
+        is.seekg(0,is.beg);
+        char * content = new char[size];
+        is.read(content, size);
+        this->content = content;
+        is.close();
+    }
 }
+
 
 char * Fichier::getContent()
 {
