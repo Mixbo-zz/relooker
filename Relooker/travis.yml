@@ -1,0 +1,10 @@
+language: cpp
+
+compiler:
+          - gcc
+
+before_script:
+          - cd Relooker
+          - kompile
+
+script: make
