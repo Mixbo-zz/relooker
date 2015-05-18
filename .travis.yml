@@ -8,6 +8,5 @@ compiler:
 before_script:
           - cd Relooker
           - chmod +x ./kompile
-          - ./kompile
 
-#script: make
+script: ./kompile
