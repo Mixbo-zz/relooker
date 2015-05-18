@@ -5,6 +5,7 @@ compiler:
 
 before_script:
           - cd Relooker
-          - kompile
+          - chmod +x ./kompile
+          - ./kompile
 
 script: make
