@@ -1,5 +1,9 @@
-# RElooker
+![Relooker](http://wakowakowako.com/mixbo/header.png)
+
 [![Version](https://img.shields.io/badge/Version-v0.3.1-green.svg)](https://github.com/Mixbo/relooker/releases/tag/v0.3.1)
+
+## Intro
+
 
 RElooker is a simple Reverse Engineering software designed to visualize binary information with colorful representations and stats. It is 100% cross platform (even if the formatting sometimes sucks).
 

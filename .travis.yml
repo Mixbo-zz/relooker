@@ -1,0 +1,13 @@
+language: cpp
+
+compiler:
+          - gcc
+
+before_script:
+          - cd Relooker
+          - chmod +x ./kompile
+          - echo "Testing Internal make Script (Omitting sudo make install)"
+          - ./kompile
+          - echo "Now with a 'real' make"
+
+script: make
