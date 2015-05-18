@@ -1,4 +1,4 @@
-![Relooker](http://wakowakowako.com/mixbo/header2.png)
+![Relooker](http://wakowakowako.com/mixbo/header3.png)
 
 [![Version](https://img.shields.io/badge/Version-v0.3.1-brightgreen.svg)](https://github.com/Mixbo/relooker/releases/tag/v0.3.1)
 [![Build](https://travis-ci.org/Mixbo/relooker.svg?branch=master)](https://travis-ci.org/Mixbo/relooker/builds)
