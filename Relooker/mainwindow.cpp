@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->binaire = NULL;
-    this->tdim = new TwoDimension();
+    this->tdim = NULL;
 
     ui->colorExplain->hide();
 
@@ -39,38 +39,61 @@ void MainWindow::on_verticalTabsList_currentRowChanged(int currentRow)
     ui->stackedEditor->setCurrentIndex(currentRow);
 }
 
+void MainWindow::cleanInfos()
+{
+    // Pointers
+    delete this->binaire;
+    this->binaire = NULL;
+    delete this->tdim;
+    this->tdim = NULL;
+    ui->visuWidget->set2(NULL);
+
+    // UI
+    ui->comboBox_mode->setCurrentIndex(0); // Initialize settings
+    ui->comboBox_algo->setCurrentIndex(0);
+
+    ui->labelNameValue->setText("-");  // Display basic stats
+    ui->labelSizeValue->setText("-");
+}
+
+void MainWindow::loadBinary(QString filename)
+{
+    this->cleanInfos();
+
+    QString title = "RElooker - "+filename; // Include filename in window's title
+    this->setWindowTitle(title);
+
+    this->binaire = new Fichier(filename.toUtf8().constData()); // Create the Fichier Instance
+    int size = binaire->getSize();
+
+    ui->labelNameValue->setText(filename);  // Display basic stats
+    ui->labelSizeValue->setText(QString::number(size)+" Bytes");
+
+    this->tdim = new TwoDimension();
+
+    this->tdim->setContent(this->binaire->getContent(),size); // Give a pointer of file to the 2dimentional representation and hex
+    ui->hexVisuWidget->setContent(binaire->getContent(),size);
+
+    ui->visuWidget->set2(tdim); // Set tdim as the 2dimentional representation of file
+    ui->visuWidget->setMode(1); // initialize mode to range
+
+    QSize sizeScroll = QSize(ui->scrollArea->width(),ui->visuWidget->getHeight()); // Resize the scroll area to show the scrollbar
+    ui->scrollAreaWidgetContents->resize(sizeScroll);
+
+    ui->visuWidget->update();
+    ui->colorExplain->show();
+
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(update_hex_view())); // Refresh hex view every 100ms
+    timer->start(100);
+}
+
 void MainWindow::on_actionOpen_triggered()
 {
     QString filename = QFileDialog::getOpenFileName(this,tr("Open File"),"./","All Files (*)");
     if(!filename.isEmpty())
     {
-        QString title = "RElooker - "+filename; // Include filename in window's title
-        this->setWindowTitle(title);
-
-        this->binaire = new Fichier(filename.toUtf8().constData()); // Create the Fichier Instance
-	    int size = binaire->getSize();
-
-        ui->comboBox_mode->setCurrentIndex(0); // Initialize settings
-        ui->comboBox_algo->setCurrentIndex(0);
-
-        ui->labelNameValue->setText(filename);  // Display basic stats
-	    ui->labelSizeValue->setText(QString::number(size)+" Bytes");
-
-        this->tdim->setContent(this->binaire->getContent(),size); // Give a pointer of file to the 2dimentional representation and hex
-        ui->hexVisuWidget->setContent(binaire->getContent(),size);
-
-        ui->visuWidget->set2(tdim); // Set tdim as the 2dimentional representation of file
-        ui->visuWidget->setMode(1); // initialize mode to range
-
-        QSize sizeScroll = QSize(ui->scrollArea->width(),ui->visuWidget->getHeight()); // Resize the scroll area to show the scrollbar
-        ui->scrollAreaWidgetContents->resize(sizeScroll);
-
-        ui->visuWidget->update();
-        ui->colorExplain->show();
-
-        QTimer *timer = new QTimer(this);
-        connect(timer, SIGNAL(timeout()), this, SLOT(update_hex_view())); // Refresh hex view every 100ms
-        timer->start(100);
+        this->loadBinary(filename);
     }
 }
 
