@@ -12,6 +12,8 @@ Visualizer::Visualizer(QWidget *parent) :
     this->itemsCol = 16;
     this->itemSize = 5;
 
+    this->mousey = 0;
+
 }
 
 int Visualizer::getHeight() // Height of the 2d representation used to resize widget
@@ -52,6 +54,7 @@ void Visualizer::mouseMoveEvent(QMouseEvent* event)
     int index = x/5 + y/5*16;
     //cout << index<<endl;
     this->index = index;
+    this->mousey = y;
 }
 
 int Visualizer::getIndex()
@@ -133,5 +136,17 @@ void Visualizer::paintTwoD() // Paint the 2 dimentional representation
     {
         QPainter painter(this);
         painter.drawPixmap( QPoint(0,0), this->im );
+        QPen pen = QPen(Qt::red);
+        pen.setWidth(2);
+        painter.setPen(pen);
+        //painter.setBrush(Qt::NoBrush);
+        painter.setBrush(QColor(255,255,255,100));
+        int y = this->mousey - this->mousey%5;
+        y -= 21;
+        if (y < 0)
+        {
+            y = 0;
+        }
+        painter.drawRect(0,y,80,80);
     }
 }

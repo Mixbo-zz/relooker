@@ -125,6 +125,7 @@ void MainWindow::on_actionAbout_triggered()
 void MainWindow::update_hex_view()
 {
     //cout << "Updating hex" << endl;
+    ui->visuWidget->update();
     ui->hexVisuWidget->setIndex(ui->visuWidget->getIndex()); // Give the last cursor position on 2d to hex
 }
 

@@ -64,13 +64,13 @@ void HexVisu::paintEvent(QPaintEvent *)
         {
             if (!endReached)
             {
-                hexAddress = QString::number(baseIndex+16*j,16);
+                hexAddress = QString::number(baseIndex+16*j,16).toUpper();
 
                 diff = num-hexAddress.size();
                 for(int i = 0;i<diff;++i)       // Fill address with 0
                     hexAddress = "0"+hexAddress;
                 hexAddress = "0x"+hexAddress;
-                painter.drawText(1,j*30+30,hexAddress.toUpper());
+                painter.drawText(1,j*30+30,hexAddress);
             }
             for(int i = 0;i<16;++i)
             {

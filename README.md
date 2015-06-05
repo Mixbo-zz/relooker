@@ -30,6 +30,7 @@ A few releases were published with a compiled executable.
   * Value range (Null,FF,Low,High,Ascii)
 * Hex Viewer
 * String Highlight
+* Graphic Stats (Pie Charts!)
 
 #### ToDo
 * Entropy Viewer
@@ -41,7 +42,6 @@ A few releases were published with a compiled executable.
   * Strings Editor
   * Ressources Editor
   * Disassembly Editor (!)
-* Add Graphic Stats (Pie Charts!)
 
 Visit [the wiki](https://github.com/Mixbo/relooker/wiki) for more informations on which features are being developped.
 If you want the ~~latest~~ **unstable** version, consider cloning the [dev branch](https://github.com/Mixbo/relooker/tree/dev).
