@@ -78,7 +78,8 @@ void Visualizer::set2(TwoDimension* tdim)
 
         //qDebug()<< h;
 
-        this->im = QImage(w,h,QImage::Format_ARGB32_Premultiplied);
+        //this->im = QImage(w,h,QImage::Format_ARGB32_Premultiplied);
+        this->im = QPixmap(w,h);
         //this->im.fill(Qt::red);
 
         qDebug()<<items;
@@ -121,9 +122,6 @@ void Visualizer::set2(TwoDimension* tdim)
                painter.setPen(framepen);
                painter.drawRect(QRectF(i%this->itemsCol * this->itemSize, i/this->itemsCol*this->itemSize,this->itemSize,this->itemSize));
             }
-            framepen.setColor(Qt::yellow);
-            painter.setBrush(Qt::yellow);
-            painter.drawRect(0,h-20,20,20);
             qDebug() << i;
             // this->im.save("/Users/what/Pictures/qtoutput.png");
         }
@@ -140,6 +138,6 @@ void Visualizer::paintTwoD() // Paint the 2 dimentional representation
     if(this->tdim)
     {
         QPainter painter(this);
-        painter.drawPixmap( QPoint(0,0), QPixmap::fromImage(this->im) );
+        painter.drawPixmap( QPoint(0,0), this->im );
     }
 }

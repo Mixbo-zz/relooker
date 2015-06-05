@@ -18,7 +18,8 @@ public:
     int getHeight();
     int getIndex();
 
-    QImage im;
+    //QImage im;
+    QPixmap im;
 
 protected:
     void paintEvent(QPaintEvent *);
