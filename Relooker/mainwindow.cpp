@@ -97,10 +97,11 @@ void MainWindow::colorExplainInit()
 {
     float * rangeOccurence = this->tdim->getRangeOccurence();
     ui->labelOccu0->setText(QString::number(rangeOccurence[0],'f',2));
-    ui->labelOccu1->setText(QString::number(rangeOccurence[1],'f',2));
+    ui->labelOccu1->setText(QString::number(rangeOccurence[3],'f',2));
     ui->labelOccu2->setText(QString::number(rangeOccurence[2],'f',2));
-    ui->labelOccu3->setText(QString::number(rangeOccurence[3],'f',2));
-    ui->labelOccu4->setText(QString::number(rangeOccurence[4],'f',2));
+    ui->labelOccu3->setText(QString::number(rangeOccurence[4],'f',2));
+    ui->labelOccu4->setText(QString::number(rangeOccurence[1],'f',2));
+    ui->rangeChart->setOccurence(rangeOccurence);
     ui->colorExplain->show();
 }
 
