@@ -75,6 +75,7 @@ void Visualizer::set2(TwoDimension* tdim)
         int h = size/16*5;
         int w = 16*5;
 
+
         //qDebug()<< h;
 
         this->im = QImage(w,h,QImage::Format_ARGB32_Premultiplied);
@@ -89,8 +90,9 @@ void Visualizer::set2(TwoDimension* tdim)
 
             //painter.fillRect(this->map.rect(),Qt::yellow);
 
-            qDebug()<< size;
-            for(int i = 0;i< size;++i)
+            qDebug()<< "La size: " << size;
+            int i;
+            for(i = 0;i< size;++i)
             {
                switch(items[i])
                {
@@ -117,8 +119,12 @@ void Visualizer::set2(TwoDimension* tdim)
                }
                // paint each square
                painter.setPen(framepen);
-               painter.drawRect(i%this->itemsCol * this->itemSize, i/this->itemsCol*this->itemSize,this->itemSize,this->itemSize);
+               painter.drawRect(QRectF(i%this->itemsCol * this->itemSize, i/this->itemsCol*this->itemSize,this->itemSize,this->itemSize));
             }
+            framepen.setColor(Qt::yellow);
+            painter.setBrush(Qt::yellow);
+            painter.drawRect(0,h-20,20,20);
+            qDebug() << i;
             // this->im.save("/Users/what/Pictures/qtoutput.png");
         }
     }    

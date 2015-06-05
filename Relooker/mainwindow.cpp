@@ -78,8 +78,9 @@ void MainWindow::loadBinary(QString filename)
 
     ui->hexVisuWidget->setContent(binaire->getContent(),size);
 
+    ui->visuWidget->setMode(1);
     ui->visuWidget->set2(tdim); // Set tdim as the 2dimentional representation of file
-    ui->visuWidget->setMode(1); // initialize mode to range
+     // initialize mode to range
 
     QSize sizeScroll = QSize(ui->scrollArea->width(),ui->visuWidget->getHeight()); // Resize the scroll area to show the scrollbar
     ui->scrollAreaWidgetContents->resize(sizeScroll);
