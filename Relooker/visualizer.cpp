@@ -1,5 +1,5 @@
 #include "visualizer.h"
-#include <QPainter>
+#include <qDebug>
 
 using namespace std;
 Visualizer::Visualizer(QWidget *parent) :
@@ -12,6 +12,7 @@ Visualizer::Visualizer(QWidget *parent) :
     this->index = 0;
     this->itemsCol = 16;
     this->itemSize = 5;
+
 }
 
 int Visualizer::getHeight() // Height of the 2d representation used to resize widget
@@ -63,25 +64,38 @@ void Visualizer::set2(TwoDimension* tdim)
 {
     this->tdim = tdim;
     this->index = 0;
-}
 
-void Visualizer::paintDefault() // Default screen
-{
-
-}
-
-void Visualizer::paintTwoD() // Paint the 2 dimentional representation
-{
     if(this->tdim)
     {
         int * items = this->tdim->getArray(this->mode);
         int size = this->tdim->getSize();
+
+        qDebug()<< "Content dans func"<<items;
+
+        int h = size/16*5;
+        int w = 16*5;
+
+
+        //qDebug()<< h;
+
+        //this->im = QImage(w,h,QImage::Format_ARGB32_Premultiplied);
+
+        this->im = QPixmap(w,h);
+
+        //this->im.fill(Qt::red);
+
+        qDebug()<<items;
         if(items)
         {
-            QPainter painter(this);
+            QPainter painter(&this->im);
             QPen framepen(Qt::black);
             framepen.setWidth(1);
-            for(int i = 0;i< size;++i)
+
+            //painter.fillRect(this->map.rect(),Qt::yellow);
+
+            qDebug()<< "La size: " << size;
+            int i;
+            for(i = 0;i< size;++i)
             {
                switch(items[i])
                {
@@ -108,8 +122,28 @@ void Visualizer::paintTwoD() // Paint the 2 dimentional representation
                }
                // paint each square
                painter.setPen(framepen);
-               painter.drawRect(i%this->itemsCol * this->itemSize /*+ 2*i%itemsCol*/,i/this->itemsCol*this->itemSize,this->itemSize,this->itemSize);
+               painter.drawRect(QRectF(i%this->itemsCol * this->itemSize, i/this->itemsCol*this->itemSize,this->itemSize,this->itemSize));
             }
+            // framepen.setColor(Qt::yellow);
+            // painter.setBrush(Qt::yellow);
+            // painter.drawRect(0,h-20,20,20);
+            qDebug() << i;
+            // this->im.save("/Users/what/Pictures/qtoutput.png");
         }
+    }    
+}
+
+void Visualizer::paintDefault() // Default screen
+{
+
+}
+
+void Visualizer::paintTwoD() // Paint the 2 dimentional representation
+{
+    if(this->tdim)
+    {
+        QPainter painter(this);
+        // painter.drawPixmap( QPoint(0,0), QPixmap::fromImage(this->im) );
+        painter.drawPixmap( QPoint(0,0), this->im );
     }
 }
