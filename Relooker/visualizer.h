@@ -27,6 +27,7 @@ private:
     int mode; // The algorithm to use in representation
     int itemsCol; // Number of items per column -> Ghettoed to 16
     int itemSize; // Size of each dots -> Ghettoed to 5
+    int mousey;
     int index; // Where the cursor is
     TwoDimension* tdim; // 2dimensions representation of file
 

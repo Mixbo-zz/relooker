@@ -1,5 +1,4 @@
 #include "visualizer.h"
-#include <qDebug>
 
 using namespace std;
 Visualizer::Visualizer(QWidget *parent) :
@@ -12,6 +11,8 @@ Visualizer::Visualizer(QWidget *parent) :
     this->index = 0;
     this->itemsCol = 16;
     this->itemSize = 5;
+
+    this->mousey = 0;
 
 }
 
@@ -53,6 +54,7 @@ void Visualizer::mouseMoveEvent(QMouseEvent* event)
     int index = x/5 + y/5*16;
     //cout << index<<endl;
     this->index = index;
+    this->mousey = y;
 }
 
 int Visualizer::getIndex()
@@ -70,21 +72,16 @@ void Visualizer::set2(TwoDimension* tdim)
         int * items = this->tdim->getArray(this->mode);
         int size = this->tdim->getSize();
 
-        qDebug()<< "Content dans func"<<items;
 
         int h = size/16*5;
         int w = 16*5;
 
 
-        //qDebug()<< h;
 
         //this->im = QImage(w,h,QImage::Format_ARGB32_Premultiplied);
-
         this->im = QPixmap(w,h);
-
         //this->im.fill(Qt::red);
 
-        qDebug()<<items;
         if(items)
         {
             QPainter painter(&this->im);
@@ -93,7 +90,6 @@ void Visualizer::set2(TwoDimension* tdim)
 
             //painter.fillRect(this->map.rect(),Qt::yellow);
 
-            qDebug()<< "La size: " << size;
             int i;
             for(i = 0;i< size;++i)
             {
@@ -124,10 +120,6 @@ void Visualizer::set2(TwoDimension* tdim)
                painter.setPen(framepen);
                painter.drawRect(QRectF(i%this->itemsCol * this->itemSize, i/this->itemsCol*this->itemSize,this->itemSize,this->itemSize));
             }
-            // framepen.setColor(Qt::yellow);
-            // painter.setBrush(Qt::yellow);
-            // painter.drawRect(0,h-20,20,20);
-            qDebug() << i;
             // this->im.save("/Users/what/Pictures/qtoutput.png");
         }
     }    
@@ -143,7 +135,18 @@ void Visualizer::paintTwoD() // Paint the 2 dimentional representation
     if(this->tdim)
     {
         QPainter painter(this);
-        // painter.drawPixmap( QPoint(0,0), QPixmap::fromImage(this->im) );
         painter.drawPixmap( QPoint(0,0), this->im );
+        QPen pen = QPen(Qt::red);
+        pen.setWidth(2);
+        painter.setPen(pen);
+        //painter.setBrush(Qt::NoBrush);
+        painter.setBrush(QColor(255,255,255,100));
+        int y = this->mousey - this->mousey%5;
+        y -= 21;
+        if (y < 0)
+        {
+            y = 0;
+        }
+        painter.drawRect(0,y,80,80);
     }
 }

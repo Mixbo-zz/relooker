@@ -4,7 +4,7 @@
 #include <QFileDialog>
 #include <QScrollBar>
 #include <QMessageBox>
-#include <qDebug>
+
 
 using namespace std;
 MainWindow::MainWindow(QWidget *parent) :
@@ -72,10 +72,8 @@ void MainWindow::loadBinary(QString filename)
     ui->labelSizeValue->setText(QString::number(size)+" Bytes");
 
     this->tdim = new TwoDimension();
-    qDebug() << "Content1: "<< static_cast<void*>(this->binaire->getContent());
     this->tdim->setContent(this->binaire->getContent(),size); // Give a pointer of file to the 2dimentional representation and hex
 
-    qDebug() << tdim->getArray(1);
 
     ui->hexVisuWidget->setContent(binaire->getContent(),size);
 
@@ -89,14 +87,25 @@ void MainWindow::loadBinary(QString filename)
     ui->scrollAreaWidgetContents->resize(sizeScroll);
 
     ui->visuWidget->update();
-    ui->colorExplain->show();
 
-    qDebug() << "Content2: " << this->binaire->getContent();
 
+    this->colorExplainInit();
 
      QTimer *timer = new QTimer(this);
      connect(timer, SIGNAL(timeout()), this, SLOT(update_hex_view())); // Refresh hex view every 100ms
      timer->start(100);
+}
+
+void MainWindow::colorExplainInit()
+{
+    float * rangeOccurence = this->tdim->getRangeOccurence();
+    ui->labelOccu0->setText(QString::number(rangeOccurence[0],'f',2));
+    ui->labelOccu1->setText(QString::number(rangeOccurence[3],'f',2));
+    ui->labelOccu2->setText(QString::number(rangeOccurence[2],'f',2));
+    ui->labelOccu3->setText(QString::number(rangeOccurence[4],'f',2));
+    ui->labelOccu4->setText(QString::number(rangeOccurence[1],'f',2));
+    ui->rangeChart->setOccurence(rangeOccurence);
+    ui->colorExplain->show();
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -194,6 +203,7 @@ void MainWindow::on_actionAbout_triggered()
 void MainWindow::update_hex_view()
 {
     //cout << "Updating hex" << endl;
+    ui->visuWidget->update();
     ui->hexVisuWidget->setIndex(ui->visuWidget->getIndex()); // Give the last cursor position on 2d to hex
 }
 

@@ -8,6 +8,7 @@ using namespace std;
 TwoDimension::TwoDimension()
 {
     this->content = NULL;
+    this->rangeOccurence = NULL;
     this->size = 0;
 }
 void TwoDimension::setContent(char * content,int size)
@@ -40,6 +41,11 @@ int * TwoDimension::getRange()
 {
     int value; 
     int * range = new int[this->size];
+    this->rangeOccurence = new float[5];
+    for (int i = 0; i < 5; ++i)
+    {
+        this->rangeOccurence[i] = 0;
+    }
     int b;
     unsigned char c;
     for(int i=0;i<this->size;++i)
@@ -60,10 +66,19 @@ int * TwoDimension::getRange()
             else if(b > 127) // High Byte = Magenta
                 value = 4;
         }
+        this->rangeOccurence[value] +=1;
         range[i] = value;
     }
     return range;
 
+}
+float * TwoDimension::getRangeOccurence()
+{
+    for (int i = 0; i < 5; ++i)
+    {
+        this->rangeOccurence[i] = this->rangeOccurence[i]*100.00/this->size;
+    }
+    return this->rangeOccurence;
 }
 
 int *TwoDimension::getEntropy() // Returns color matrix representing entropy (not implemented)
