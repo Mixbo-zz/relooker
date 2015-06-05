@@ -24,6 +24,7 @@ private slots:
     void on_verticalTabsList_currentRowChanged(int currentRow);
     void cleanInfos();
     void loadBinary(QString filename);
+    void colorExplainInit();
     void on_actionOpen_triggered();
     void on_actionAbout_triggered();
     void on_comboBox_mode_currentIndexChanged(int index);
