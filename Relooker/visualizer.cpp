@@ -1,5 +1,4 @@
 #include "visualizer.h"
-#include <qDebug>
 
 using namespace std;
 Visualizer::Visualizer(QWidget *parent) :
@@ -70,19 +69,16 @@ void Visualizer::set2(TwoDimension* tdim)
         int * items = this->tdim->getArray(this->mode);
         int size = this->tdim->getSize();
 
-        qDebug()<< "Content dans func"<<items;
 
         int h = size/16*5;
         int w = 16*5;
 
 
-        //qDebug()<< h;
 
         //this->im = QImage(w,h,QImage::Format_ARGB32_Premultiplied);
         this->im = QPixmap(w,h);
         //this->im.fill(Qt::red);
 
-        qDebug()<<items;
         if(items)
         {
             QPainter painter(&this->im);
@@ -91,7 +87,6 @@ void Visualizer::set2(TwoDimension* tdim)
 
             //painter.fillRect(this->map.rect(),Qt::yellow);
 
-            qDebug()<< "La size: " << size;
             int i;
             for(i = 0;i< size;++i)
             {
@@ -122,7 +117,6 @@ void Visualizer::set2(TwoDimension* tdim)
                painter.setPen(framepen);
                painter.drawRect(QRectF(i%this->itemsCol * this->itemSize, i/this->itemsCol*this->itemSize,this->itemSize,this->itemSize));
             }
-            qDebug() << i;
             // this->im.save("/Users/what/Pictures/qtoutput.png");
         }
     }    
