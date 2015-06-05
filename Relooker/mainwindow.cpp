@@ -3,6 +3,7 @@
 
 #include <QFileDialog>
 #include <QMessageBox>
+#include <qDebug>
 
 using namespace std;
 MainWindow::MainWindow(QWidget *parent) :
@@ -70,8 +71,11 @@ void MainWindow::loadBinary(QString filename)
     ui->labelSizeValue->setText(QString::number(size)+" Bytes");
 
     this->tdim = new TwoDimension();
-
+    qDebug() << "Content1: "<< static_cast<void*>(this->binaire->getContent());
     this->tdim->setContent(this->binaire->getContent(),size); // Give a pointer of file to the 2dimentional representation and hex
+
+    qDebug() << tdim->getArray(1);
+
     ui->hexVisuWidget->setContent(binaire->getContent(),size);
 
     ui->visuWidget->set2(tdim); // Set tdim as the 2dimentional representation of file
@@ -83,9 +87,12 @@ void MainWindow::loadBinary(QString filename)
     ui->visuWidget->update();
     ui->colorExplain->show();
 
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(update_hex_view())); // Refresh hex view every 100ms
-    timer->start(100);
+    qDebug() << "Content2: " << this->binaire->getContent();
+
+
+     QTimer *timer = new QTimer(this);
+     connect(timer, SIGNAL(timeout()), this, SLOT(update_hex_view())); // Refresh hex view every 100ms
+     timer->start(100);
 }
 
 void MainWindow::on_actionOpen_triggered()

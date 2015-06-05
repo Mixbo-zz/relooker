@@ -21,9 +21,8 @@ void Fichier::openFile()
         std::size_t size=is.tellg();
          this->size = size;
         is.seekg(0,is.beg);
-        char * content = new char[size];
-        is.read(content, size);
-        this->content = content;
+        this->content = new char[size];
+        is.read(this->content, size);
         is.close();
     }
 }
