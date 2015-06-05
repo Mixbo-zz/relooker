@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QMouseEvent>
+#include <QPainter>
+#include <QPixmap>
 #include "twodimension.h"
 
 class Visualizer : public QWidget
@@ -15,6 +17,10 @@ public:
     void set2(TwoDimension*);
     int getHeight();
     int getIndex();
+
+    //QImage im;
+    QPixmap im;
+
 protected:
     void paintEvent(QPaintEvent *);
 private:

@@ -19,11 +19,10 @@ void Fichier::openFile()
     {
         is.seekg(0, std::ios_base::end);
         std::size_t size=is.tellg();
-         this->size = size;
+        this->size = size;
         is.seekg(0,is.beg);
-        char * content = new char[size];
-        is.read(content, size);
-        this->content = content;
+        this->content = new char[size];
+        is.read(this->content, size);
         is.close();
     }
 }
