@@ -31,10 +31,14 @@ private slots:
     void on_checkBox_strings_toggled(bool checked);
     void on_comboBox_algo_currentIndexChanged(int index);
 
+    void saveFile();
+    void on_saveButton_clicked();
+
 public slots:
     void update_hex_view();
 
 private:
+    void setHexEditor();
     Ui::MainWindow *ui;
     Fichier *binaire;
     TwoDimension* tdim; // The Two Dimension Representation (with multiple algorithms)

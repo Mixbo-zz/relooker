@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>625</height>
+    <width>1150</width>
+    <height>650</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,8 +18,8 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>1000</width>
-    <height>625</height>
+    <width>1150</width>
+    <height>650</height>
    </size>
   </property>
   <property name="palette">
@@ -1312,7 +1312,7 @@ QTabWidget::tab-bar {
           <item>
            <widget class="QGroupBox" name="groupBox_View">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1580,8 +1580,47 @@ QTabWidget::tab-bar {
                     <enum>QFrame::Raised</enum>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_10">
+                    <item row="0" column="1">
+                     <widget class="HexVisu" name="hexVisuWidget" native="true">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>600</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
                     <item row="0" column="0">
-                     <widget class="HexVisu" name="hexVisuWidget" native="true"/>
+                     <spacer name="horizontalSpacer">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item row="0" column="2">
+                     <spacer name="horizontalSpacer_2">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
                     </item>
                    </layout>
                   </widget>
@@ -1836,6 +1875,29 @@ QTabWidget::tab-bar {
            </widget>
           </item>
           <item>
+           <spacer name="verticalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="saveButton">
+            <property name="text">
+             <string>Save</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <spacer name="verticalSpacer_downTabs">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -2040,6 +2102,61 @@ QTabWidget::tab-bar {
               <property name="title">
                <string>Hex</string>
               </property>
+              <layout class="QGridLayout" name="gridLayout_12">
+               <item row="0" column="1">
+                <widget class="QTableWidget" name="hexEditAsciiWidget">
+                 <property name="maximumSize">
+                  <size>
+                   <width>300</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="verticalScrollBarPolicy">
+                  <enum>Qt::ScrollBarAlwaysOn</enum>
+                 </property>
+                 <property name="horizontalScrollBarPolicy">
+                  <enum>Qt::ScrollBarAlwaysOff</enum>
+                 </property>
+                 <property name="verticalScrollMode">
+                  <enum>QAbstractItemView::ScrollPerPixel</enum>
+                 </property>
+                 <property name="horizontalScrollMode">
+                  <enum>QAbstractItemView::ScrollPerPixel</enum>
+                 </property>
+                 <property name="gridStyle">
+                  <enum>Qt::NoPen</enum>
+                 </property>
+                 <property name="rowCount">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QTableWidget" name="hexEditWidget">
+                 <property name="verticalScrollBarPolicy">
+                  <enum>Qt::ScrollBarAlwaysOff</enum>
+                 </property>
+                 <property name="horizontalScrollBarPolicy">
+                  <enum>Qt::ScrollBarAlwaysOff</enum>
+                 </property>
+                 <property name="verticalScrollMode">
+                  <enum>QAbstractItemView::ScrollPerPixel</enum>
+                 </property>
+                 <property name="horizontalScrollMode">
+                  <enum>QAbstractItemView::ScrollPerPixel</enum>
+                 </property>
+                 <property name="showGrid">
+                  <bool>true</bool>
+                 </property>
+                 <property name="gridStyle">
+                  <enum>Qt::NoPen</enum>
+                 </property>
+                 <property name="rowCount">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </widget>
             </item>
            </layout>
@@ -4133,7 +4250,7 @@ QTabWidget::tab-bar {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
+     <width>1150</width>
      <height>22</height>
     </rect>
    </property>

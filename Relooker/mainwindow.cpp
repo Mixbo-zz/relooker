@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include <QFileDialog>
+#include <QScrollBar>
 #include <QMessageBox>
 
 
@@ -20,8 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabWidget->removeTab(1);
     ui->comboBox_mode->removeItem(1);
 
-    for(int i=0;i<3;++i)
-        ui->comboBox_algo->removeItem(1);
+    for(int i=0;i<2;++i)
+        ui->comboBox_algo->removeItem(2);
 }
 
 MainWindow::~MainWindow()
@@ -76,6 +77,8 @@ void MainWindow::loadBinary(QString filename)
 
     ui->hexVisuWidget->setContent(binaire->getContent(),size);
 
+    this->setHexEditor();
+    
     ui->visuWidget->setMode(1);
     ui->visuWidget->set2(tdim); // Set tdim as the 2dimentional representation of file
      // initialize mode to range
@@ -113,6 +116,81 @@ void MainWindow::on_actionOpen_triggered()
         this->loadBinary(filename);
     }
 }
+void MainWindow::setHexEditor()
+{
+    connect(ui->hexEditWidget->verticalScrollBar(), SIGNAL(valueChanged(int)), ui->hexEditAsciiWidget->verticalScrollBar(), SLOT(setValue(int)));
+    connect(ui->hexEditAsciiWidget->verticalScrollBar(), SIGNAL(valueChanged(int)), ui->hexEditWidget->verticalScrollBar(), SLOT(setValue(int)));
+    ui->hexEditWidget->setColumnCount(16);
+    ui->hexEditAsciiWidget->setColumnCount(16);
+
+    for(int i=0;i<16;++i)
+        ui->hexEditWidget->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::number(i,16).toUpper()));
+    for(int i=0;i<16;++i)
+        ui->hexEditAsciiWidget->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::number(i,16).toUpper()));
+
+    ui->hexEditWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+    ui->hexEditAsciiWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+
+    int hexEditorSize = this->binaire->getSize()/16;
+    if (this->binaire->getSize()%16 != 0)
+        ++hexEditorSize;
+    ui->hexEditWidget->setRowCount(hexEditorSize);
+    ui->hexEditAsciiWidget->setRowCount(hexEditorSize);
+
+
+
+    QString hexValue;
+    QString charValue;
+    QString hexAddress;
+
+    QFont fnt;
+    fnt.setPixelSize(12);
+
+    int baseIndex = ui->visuWidget->getIndex();
+    int characterInt;
+
+
+    int num = QString::number(hexEditorSize,16).toUpper().size();
+    int diff = 0;
+
+    for(int j=0;j<hexEditorSize;++j)
+    {
+        hexAddress = QString::number(j*16,16).toUpper();
+        diff = num-hexAddress.size();
+        for(int i=0;i<diff;++i)
+            hexAddress = "0"+hexAddress;
+        ui->hexEditWidget->setVerticalHeaderItem(j, new QTableWidgetItem(hexAddress));
+        ui->hexEditAsciiWidget->setVerticalHeaderItem(j, new QTableWidgetItem(""));
+
+        for(int i = 0;i<16;++i)
+        {
+            if(i+j*16 < this->binaire->getSize())
+            {
+                characterInt = (int)(unsigned char)this->binaire->getContent()[baseIndex+j*16+i]; // The read character as a number
+
+                if(characterInt == 9 || characterInt == 10 || characterInt == 13 ||(characterInt >= 32 && characterInt <= 127)) // If ASCII
+                {
+                    charValue = this->binaire->getContent()[baseIndex+j*16+i]; // Display Character instead of "."
+                }
+                else
+                    charValue = ".";
+
+                hexValue = QString::number( characterInt ,16).toUpper(); // Converted to hex
+                if (hexValue.size() == 1)
+                    hexValue = "0"+hexValue;
+
+                ui->hexEditWidget->setItem(j,i,new QTableWidgetItem(hexValue));
+                ui->hexEditAsciiWidget->setItem(j,i,new QTableWidgetItem(charValue));
+
+                ui->hexEditWidget->item(j,i)->setFont(fnt);
+            }
+        }
+    }
+
+    ui->hexEditWidget->verticalHeader()->setResizeMode(QHeaderView::Stretch);
+    ui->hexEditAsciiWidget->verticalHeader()->setResizeMode(QHeaderView::Stretch);
+
+}
 
 void MainWindow::on_actionAbout_triggered()
 {
@@ -141,7 +219,7 @@ void MainWindow::on_checkBox_strings_toggled(bool checked)
 
 void MainWindow::on_comboBox_algo_currentIndexChanged(int index)
 {
-    if(index > 0)
+    if(index > 1)
     {
         QMessageBox::information(this,
                              tr("RElooker"),
@@ -151,4 +229,22 @@ void MainWindow::on_comboBox_algo_currentIndexChanged(int index)
     } 
     else
         ui->visuWidget->setMode(index+1); // Set mode to the combo box index+1 because why not
+        ui->visuWidget->createPixmap();
+        ui->visuWidget->update();
+}
+
+void MainWindow::saveFile()
+{
+    QString filename = QFileDialog::getSaveFileName(this, tr("Save file"), "./", "All Files (*)");
+    QFile f( filename );
+    f.open( QIODevice::WriteOnly );
+    
+    f.write(this->binaire->getContent(),this->binaire->getSize());
+
+    f.close();
+}
+
+void MainWindow::on_saveButton_clicked()
+{
+    this->saveFile();
 }
