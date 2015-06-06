@@ -28,12 +28,12 @@ A few releases were published with a compiled executable.
 #### Currently Working
 * 2D Visualization
   * Value range (Null,FF,Low,High,Ascii)
+  * Entropy Viewer
 * Hex Viewer
 * String Highlight
 * Graphic Stats (Pie Charts!)
 
 #### ToDo
-* Entropy Viewer
 * Call Structure Viewer
 * Media listing
 * 3D Viewer (!)
