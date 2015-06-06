@@ -78,7 +78,7 @@ QColor * TwoDimension::getRange()
             else if(b > 127) // High Byte = Magenta
             {
                 value = 4;
-                temp = QColor(255,0,0);
+                temp = QColor(Qt::magenta);
             }
         }
         this->rangeOccurence[value] +=1;
@@ -143,7 +143,7 @@ double TwoDimension::shannon(int i)
     for (int j=0;j<256;++j)
         mapper[j] = 0;
 
-    int blocksize = 32;
+    int blocksize = 64;
     int start = i - blocksize / 2;
 
     if(start < 0)
