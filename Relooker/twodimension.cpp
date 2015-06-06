@@ -18,9 +18,9 @@ void TwoDimension::setContent(char * content,int size)
     this->size = size;
 }
 
-int *TwoDimension::getArray(int mode) // Ask for array of type mode
+QColor *TwoDimension::getArray(int mode) // Ask for array of type mode
 {
-    int* returnValue = NULL;
+    QColor* returnValue = NULL;
     switch (mode)
     {
         case 1:
@@ -38,10 +38,10 @@ int TwoDimension::getSize()
     return size;
 }
 
-int * TwoDimension::getRange()
+QColor * TwoDimension::getRange()
 {
     int value; 
-    int * range = new int[this->size];
+    QColor * range = new QColor[this->size];
     this->rangeOccurence = new float[5];
     for (int i = 0; i < 5; ++i)
     {
@@ -49,9 +49,11 @@ int * TwoDimension::getRange()
     }
     int b;
     unsigned char c;
+    QColor temp;
     for(int i=0;i<this->size;++i)
     {
         value = 0;
+        temp = QColor(0,0,0);
         b = c = this->content[i];
         //cout << c << ":" << b << endl;
         //cout << uppercase << setw(2) << setfill('0')<< hex << int(b) << endl;
@@ -59,16 +61,28 @@ int * TwoDimension::getRange()
         if(b != 0) // null byte = black
         {
             if(b == 255)// FF = white
+            {
                 value = 1;
+                temp = QColor(255,255,255);
+            }
             else if(b == 9 || b == 10 || b == 13 || (b >= 32 && b <= 127)) // ASCII = Blue
+            {
                 value = 2;
+                temp = QColor(0,0,255);
+            }
             else if(b < 32) // Low Byte = Green
+            {
                 value = 3;
+                temp = QColor(0,255,0);
+            }
             else if(b > 127) // High Byte = Magenta
+            {
                 value = 4;
+                temp = QColor(255,0,0);
+            }
         }
         this->rangeOccurence[value] +=1;
-        range[i] = value;
+        range[i] = temp;
     }
     return range;
 
@@ -82,16 +96,10 @@ float * TwoDimension::getRangeOccurence()
     return this->rangeOccurence;
 }
 
-int *TwoDimension::getEntropy() // Returns color matrix representing entropy (not implemented)
+QColor *TwoDimension::getEntropy() // Returns color matrix representing entropy (not implemented)
 {
     double * entropy = new double[this->size];
-    int * colors = new int[this->size];
-    for (int i = 0; i < this->size; ++i)
-    {
-        colors[i] = 10;
-    }
-
-
+    QColor * colors = new QColor[this->size];
 
     for(int i=0;i<this->size;++i)
     {
@@ -112,6 +120,7 @@ int *TwoDimension::getEntropy() // Returns color matrix representing entropy (no
         //cout << entropy[i];
 
         cout << "r: " <<r<<" b: "<<b<<" e: "<<entropy[i];
+        colors[i] = QColor((int)r,0,(int)b);
     }
     return colors;
 }
