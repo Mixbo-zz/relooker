@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <math.h>
 
 using namespace std;
 
@@ -83,8 +84,84 @@ float * TwoDimension::getRangeOccurence()
 
 int *TwoDimension::getEntropy() // Returns color matrix representing entropy (not implemented)
 {
-    int * entropy = new int[this->size];
+    double * entropy = new double[this->size];
+    int * colors = new int[this->size];
+    for (int i = 0; i < this->size; ++i)
+    {
+        colors[i] = 10;
+    }
+
+
+
     for(int i=0;i<this->size;++i)
-        entropy[i] = 3;
+    {
+        entropy[i] = this->shannon(i);
+
+        double r;
+        double b;
+
+        if(entropy[i] > 0.5)
+            r = this->courbeur(entropy[i]-0.5);
+        else
+            r = 0;
+
+        b = pow(entropy[i],2);
+
+        r = r*255;
+        b = b*255;
+        //cout << entropy[i];
+
+        cout << "r: " <<r<<" b: "<<b<<" e: "<<entropy[i];
+    }
+    return colors;
+}
+
+double TwoDimension::courbeur(double v)
+{
+    double f = pow((4 * v - 4 * pow(v,2)),4);
+    if (f > 0)
+        return f;
+    else
+        return 0.0;
+}
+
+double TwoDimension::shannon(int i)
+{
+    int b;
+    unsigned char c;
+    int * mapper = new int[256];
+
+    for (int j=0;j<256;++j)
+        mapper[j] = 0;
+
+    int blocksize = 32;
+    int start = i - blocksize / 2;
+
+    if(start < 0)
+        start = 0;
+    else if (i > this->size-blocksize/2)
+        start = this->size - blocksize;
+
+    for (int j = 0; j < blocksize; ++j)
+    {
+        b = c = this->content[start+j];
+        //cout << b;
+        mapper[b] += 1;
+    }
+
+    //cout << '\n';
+
+    double entropy = 0.0;
+    double frequence;
+
+    for (int j = 0; j < 256; ++j)
+    {
+        if(mapper[j] != 0)
+        {
+            frequence = (double)mapper[j] / (float)blocksize;
+            entropy -= frequence * (log(frequence) / log(blocksize));
+        }
+    }
+    cout << "Valeur entropie = "<<entropy << "\n";
     return entropy;
 }

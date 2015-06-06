@@ -17,6 +17,7 @@ public:
     void set2(TwoDimension*);
     int getHeight();
     int getIndex();
+    void createPixmap();
 
     //QImage im;
     QPixmap im;

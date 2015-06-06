@@ -16,6 +16,9 @@ private:
     char * content;
     float * rangeOccurence;
     int size;
+    double courbeur(double);
+    double shannon(int);
+
 };
 
 #endif

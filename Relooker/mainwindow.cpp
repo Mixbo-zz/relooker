@@ -21,8 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
 //    ui->tabWidget->removeTab(1);
     ui->comboBox_mode->removeItem(1);
 
-    for(int i=0;i<3;++i)
-        ui->comboBox_algo->removeItem(1);
+    for(int i=0;i<2;++i)
+        ui->comboBox_algo->removeItem(2);
 }
 
 MainWindow::~MainWindow()
@@ -219,7 +219,7 @@ void MainWindow::on_checkBox_strings_toggled(bool checked)
 
 void MainWindow::on_comboBox_algo_currentIndexChanged(int index)
 {
-    if(index > 0)
+    if(index > 1)
     {
         QMessageBox::information(this,
                              tr("RElooker"),
@@ -229,4 +229,22 @@ void MainWindow::on_comboBox_algo_currentIndexChanged(int index)
     } 
     else
         ui->visuWidget->setMode(index+1); // Set mode to the combo box index+1 because why not
+        ui->visuWidget->createPixmap();
+        ui->visuWidget->update();
+}
+
+void MainWindow::saveFile()
+{
+    QString filename = QFileDialog::getSaveFileName(this, tr("Save file"), "./", "All Files (*)");
+    QFile f( filename );
+    f.open( QIODevice::WriteOnly );
+    
+    f.write(this->binaire->getContent(),this->binaire->getSize());
+
+    f.close();
+}
+
+void MainWindow::on_saveButton_clicked()
+{
+    this->saveFile();
 }
