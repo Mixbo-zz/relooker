@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "signature.h"
 
 #include <QFileDialog>
 #include <QScrollBar>
@@ -74,6 +75,8 @@ void MainWindow::loadBinary(QString filename)
     this->tdim = new TwoDimension();
     this->tdim->setContent(this->binaire->getContent(),size); // Give a pointer of file to the 2dimentional representation and hex
 
+    signature sig = signature();
+    sig.findSignature(this->binaire->getContent());
 
     ui->hexVisuWidget->setContent(binaire->getContent(),size);
 
