@@ -77,7 +77,7 @@ void MainWindow::loadBinary(QString filename)
 
     ui->hexVisuWidget->setContent(binaire->getContent(),size);
 
-    this->setHexEditor();
+    //this->setHexEditor();
     
     ui->visuWidget->setMode(1);
     ui->visuWidget->set2(tdim); // Set tdim as the 2dimentional representation of file
@@ -116,81 +116,81 @@ void MainWindow::on_actionOpen_triggered()
         this->loadBinary(filename);
     }
 }
-void MainWindow::setHexEditor()
-{
-    connect(ui->hexEditWidget->verticalScrollBar(), SIGNAL(valueChanged(int)), ui->hexEditAsciiWidget->verticalScrollBar(), SLOT(setValue(int)));
-    connect(ui->hexEditAsciiWidget->verticalScrollBar(), SIGNAL(valueChanged(int)), ui->hexEditWidget->verticalScrollBar(), SLOT(setValue(int)));
-    ui->hexEditWidget->setColumnCount(16);
-    ui->hexEditAsciiWidget->setColumnCount(16);
+// void MainWindow::setHexEditor()
+// {
+//     connect(ui->hexEditWidget->verticalScrollBar(), SIGNAL(valueChanged(int)), ui->hexEditAsciiWidget->verticalScrollBar(), SLOT(setValue(int)));
+//     connect(ui->hexEditAsciiWidget->verticalScrollBar(), SIGNAL(valueChanged(int)), ui->hexEditWidget->verticalScrollBar(), SLOT(setValue(int)));
+//     ui->hexEditWidget->setColumnCount(16);
+//     ui->hexEditAsciiWidget->setColumnCount(16);
 
-    for(int i=0;i<16;++i)
-        ui->hexEditWidget->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::number(i,16).toUpper()));
-    for(int i=0;i<16;++i)
-        ui->hexEditAsciiWidget->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::number(i,16).toUpper()));
+//     for(int i=0;i<16;++i)
+//         ui->hexEditWidget->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::number(i,16).toUpper()));
+//     for(int i=0;i<16;++i)
+//         ui->hexEditAsciiWidget->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::number(i,16).toUpper()));
 
-    ui->hexEditWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-    ui->hexEditAsciiWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+//     ui->hexEditWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+//     ui->hexEditAsciiWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
 
-    int hexEditorSize = this->binaire->getSize()/16;
-    if (this->binaire->getSize()%16 != 0)
-        ++hexEditorSize;
-    ui->hexEditWidget->setRowCount(hexEditorSize);
-    ui->hexEditAsciiWidget->setRowCount(hexEditorSize);
-
-
-
-    QString hexValue;
-    QString charValue;
-    QString hexAddress;
-
-    QFont fnt;
-    fnt.setPixelSize(12);
-
-    int baseIndex = ui->visuWidget->getIndex();
-    int characterInt;
+//     int hexEditorSize = this->binaire->getSize()/16;
+//     if (this->binaire->getSize()%16 != 0)
+//         ++hexEditorSize;
+//     ui->hexEditWidget->setRowCount(hexEditorSize);
+//     ui->hexEditAsciiWidget->setRowCount(hexEditorSize);
 
 
-    int num = QString::number(hexEditorSize,16).toUpper().size();
-    int diff = 0;
 
-    for(int j=0;j<hexEditorSize;++j)
-    {
-        hexAddress = QString::number(j*16,16).toUpper();
-        diff = num-hexAddress.size();
-        for(int i=0;i<diff;++i)
-            hexAddress = "0"+hexAddress;
-        ui->hexEditWidget->setVerticalHeaderItem(j, new QTableWidgetItem(hexAddress));
-        ui->hexEditAsciiWidget->setVerticalHeaderItem(j, new QTableWidgetItem(""));
+//     QString hexValue;
+//     QString charValue;
+//     QString hexAddress;
 
-        for(int i = 0;i<16;++i)
-        {
-            if(i+j*16 < this->binaire->getSize())
-            {
-                characterInt = (int)(unsigned char)this->binaire->getContent()[baseIndex+j*16+i]; // The read character as a number
+//     QFont fnt;
+//     fnt.setPixelSize(12);
 
-                if(characterInt == 9 || characterInt == 10 || characterInt == 13 ||(characterInt >= 32 && characterInt <= 127)) // If ASCII
-                {
-                    charValue = this->binaire->getContent()[baseIndex+j*16+i]; // Display Character instead of "."
-                }
-                else
-                    charValue = ".";
+//     int baseIndex = ui->visuWidget->getIndex();
+//     int characterInt;
 
-                hexValue = QString::number( characterInt ,16).toUpper(); // Converted to hex
-                if (hexValue.size() == 1)
-                    hexValue = "0"+hexValue;
 
-                ui->hexEditWidget->setItem(j,i,new QTableWidgetItem(hexValue));
-                ui->hexEditAsciiWidget->setItem(j,i,new QTableWidgetItem(charValue));
+//     int num = QString::number(hexEditorSize,16).toUpper().size();
+//     int diff = 0;
 
-                ui->hexEditWidget->item(j,i)->setFont(fnt);
-            }
-        }
-    }
+//     for(int j=0;j<hexEditorSize;++j)
+//     {
+//         hexAddress = QString::number(j*16,16).toUpper();
+//         diff = num-hexAddress.size();
+//         for(int i=0;i<diff;++i)
+//             hexAddress = "0"+hexAddress;
+//         ui->hexEditWidget->setVerticalHeaderItem(j, new QTableWidgetItem(hexAddress));
+//         ui->hexEditAsciiWidget->setVerticalHeaderItem(j, new QTableWidgetItem(""));
 
-    ui->hexEditWidget->verticalHeader()->setResizeMode(QHeaderView::Stretch);
-    ui->hexEditAsciiWidget->verticalHeader()->setResizeMode(QHeaderView::Stretch);
+//         for(int i = 0;i<16;++i)
+//         {
+//             if(i+j*16 < this->binaire->getSize())
+//             {
+//                 characterInt = (int)(unsigned char)this->binaire->getContent()[baseIndex+j*16+i]; // The read character as a number
 
-}
+//                 if(characterInt == 9 || characterInt == 10 || characterInt == 13 ||(characterInt >= 32 && characterInt <= 127)) // If ASCII
+//                 {
+//                     charValue = this->binaire->getContent()[baseIndex+j*16+i]; // Display Character instead of "."
+//                 }
+//                 else
+//                     charValue = ".";
+
+//                 hexValue = QString::number( characterInt ,16).toUpper(); // Converted to hex
+//                 if (hexValue.size() == 1)
+//                     hexValue = "0"+hexValue;
+
+//                 ui->hexEditWidget->setItem(j,i,new QTableWidgetItem(hexValue));
+//                 ui->hexEditAsciiWidget->setItem(j,i,new QTableWidgetItem(charValue));
+
+//                 ui->hexEditWidget->item(j,i)->setFont(fnt);
+//             }
+//         }
+//     }
+
+//     ui->hexEditWidget->verticalHeader()->setResizeMode(QHeaderView::Stretch);
+//     ui->hexEditAsciiWidget->verticalHeader()->setResizeMode(QHeaderView::Stretch);
+
+// }
 
 void MainWindow::on_actionAbout_triggered()
 {
