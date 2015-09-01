@@ -2,7 +2,7 @@
 
 
 ### Status
-[![Version](https://img.shields.io/badge/Version-v0.5.0-brightgreen.svg)](https://github.com/Mixbo/relooker/releases/tag/v0.5.0)
+[![Version](https://img.shields.io/badge/Version-v0.5.1-brightgreen.svg)](https://github.com/Mixbo/relooker/releases/tag/v0.5.1)
 [![Build](https://travis-ci.org/Mixbo/relooker.svg?branch=master)](https://travis-ci.org/Mixbo/relooker/builds)
 
 ## Intro
