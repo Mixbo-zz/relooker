@@ -101,11 +101,9 @@ QColor *TwoDimension::getEntropy() // Returns color matrix representing entropy
     double * entropy = new double[this->size];
     QColor * colors = new QColor[this->size];
 
-    Algo* algo = new Algo();
-
     for(int i=0;i<this->size;++i)
     {
-        entropy[i] = algo->shannon(i,this->size,this->content,64); //64 is the blocksize
+        entropy[i] = Algo::shannon(i,this->size,this->content,64); //64 is the blocksize
 
         double r;
         double b;
@@ -122,7 +120,6 @@ QColor *TwoDimension::getEntropy() // Returns color matrix representing entropy
 
         colors[i] = QColor((int)r,0,(int)b);
     }
-    delete algo;
     return colors;
 }
 

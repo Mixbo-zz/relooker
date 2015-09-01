@@ -5,7 +5,7 @@ class Algo
 {
 public:
 	Algo();
-	double shannon(int, int, char*, int);
+	static double shannon(int, int, char*, int);
 };
 
 #endif
