@@ -117,9 +117,7 @@ QColor *TwoDimension::getEntropy() // Returns color matrix representing entropy 
 
         r = r*255;
         b = b*255;
-        //cout << entropy[i];
 
-        cout << "r: " <<r<<" b: "<<b<<" e: "<<entropy[i];
         colors[i] = QColor((int)r,0,(int)b);
     }
     return colors;
@@ -154,11 +152,8 @@ double TwoDimension::shannon(int i)
     for (int j = 0; j < blocksize; ++j)
     {
         b = c = this->content[start+j];
-        //cout << b;
         mapper[b] += 1;
     }
-
-    //cout << '\n';
 
     double entropy = 0.0;
     double frequence;
@@ -171,6 +166,5 @@ double TwoDimension::shannon(int i)
             entropy -= frequence * (log(frequence) / log(blocksize));
         }
     }
-    cout << "Valeur entropie = "<<entropy << "\n";
     return entropy;
 }
