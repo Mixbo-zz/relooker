@@ -12,7 +12,7 @@ RElooker is a simple Reverse Engineering software designed to visualize binary i
 
 Basic editing will also be possible sooner or later. 
 
-[Download current release](https://github.com/Mixbo/relooker/releases)
+[Download current release](https://github.com/Mixbo/relooker/releases/latest)
 
 ## Which files can I analyze?
 Any. Most features are structure independant and interpret the actual content of the file instead of relying on headers and/or prior knowledge. What you see is what you get.
