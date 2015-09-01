@@ -43,6 +43,9 @@ A few releases were published with a compiled executable.
   * Strings Editor
   * Ressources Editor
   * Disassembly Editor (!)
+* Thread Optimization
+* Fix File Size Limitation
+* Export Stats
 
 Visit [the wiki](https://github.com/Mixbo/relooker/wiki) for more informations on which features are being developped.
 If you want the ~~latest~~ **unstable** version, consider cloning the [dev branch](https://github.com/Mixbo/relooker/tree/dev).

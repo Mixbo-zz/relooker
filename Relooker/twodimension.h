@@ -1,5 +1,7 @@
 #ifndef TWODIMENSION_H
 #define TWODIMENSION_H
+
+#include "algo.h"
 #include <QColor>
 #include <iostream>
 
@@ -18,8 +20,6 @@ private:
     float * rangeOccurence;
     int size;
     double courbeur(double);
-    double shannon(int);
-
 };
 
 #endif

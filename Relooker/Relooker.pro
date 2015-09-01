@@ -22,14 +22,16 @@ SOURCES += main.cpp\
     twodimension.cpp \
     visualizer.cpp \
     hexvisu.cpp \
-    piechartwidget.cpp
+    piechartwidget.cpp \
+    algo.cpp
 
 HEADERS  += mainwindow.h \
     fichier.h \
     twodimension.h \
     visualizer.h \
     hexvisu.h \
-    piechartwidget.h
+    piechartwidget.h \
+    algo.h
 
 FORMS    += mainwindow.ui
 

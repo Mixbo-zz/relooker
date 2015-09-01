@@ -96,14 +96,14 @@ float * TwoDimension::getRangeOccurence()
     return this->rangeOccurence;
 }
 
-QColor *TwoDimension::getEntropy() // Returns color matrix representing entropy (not implemented)
+QColor *TwoDimension::getEntropy() // Returns color matrix representing entropy
 {
     double * entropy = new double[this->size];
     QColor * colors = new QColor[this->size];
 
     for(int i=0;i<this->size;++i)
     {
-        entropy[i] = this->shannon(i);
+        entropy[i] = Algo::shannon(i,this->size,this->content,64); //64 is the blocksize
 
         double r;
         double b;
@@ -117,9 +117,7 @@ QColor *TwoDimension::getEntropy() // Returns color matrix representing entropy 
 
         r = r*255;
         b = b*255;
-        //cout << entropy[i];
 
-        cout << "r: " <<r<<" b: "<<b<<" e: "<<entropy[i];
         colors[i] = QColor((int)r,0,(int)b);
     }
     return colors;
@@ -132,45 +130,4 @@ double TwoDimension::courbeur(double v)
         return f;
     else
         return 0.0;
-}
-
-double TwoDimension::shannon(int i)
-{
-    int b;
-    unsigned char c;
-    int * mapper = new int[256];
-
-    for (int j=0;j<256;++j)
-        mapper[j] = 0;
-
-    int blocksize = 64;
-    int start = i - blocksize / 2;
-
-    if(start < 0)
-        start = 0;
-    else if (i > this->size-blocksize/2)
-        start = this->size - blocksize;
-
-    for (int j = 0; j < blocksize; ++j)
-    {
-        b = c = this->content[start+j];
-        //cout << b;
-        mapper[b] += 1;
-    }
-
-    //cout << '\n';
-
-    double entropy = 0.0;
-    double frequence;
-
-    for (int j = 0; j < 256; ++j)
-    {
-        if(mapper[j] != 0)
-        {
-            frequence = (double)mapper[j] / (float)blocksize;
-            entropy -= frequence * (log(frequence) / log(blocksize));
-        }
-    }
-    cout << "Valeur entropie = "<<entropy << "\n";
-    return entropy;
 }

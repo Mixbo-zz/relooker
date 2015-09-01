@@ -5,6 +5,7 @@
 #include <QTimer>
 #include "fichier.h"
 #include "twodimension.h"
+#include "algo.h"
 class QListWidgetItem;
 
 namespace Ui {

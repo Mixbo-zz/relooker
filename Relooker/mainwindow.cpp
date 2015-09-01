@@ -70,6 +70,7 @@ void MainWindow::loadBinary(QString filename)
 
     ui->labelNameValue->setText(filename);  // Display basic stats
     ui->labelSizeValue->setText(QString::number(size)+" Bytes");
+    ui->labelShannonValue->setText(QString::number(Algo::shannon(0,size,this->binaire->getContent(),size)));
 
     this->tdim = new TwoDimension();
     this->tdim->setContent(this->binaire->getContent(),size); // Give a pointer of file to the 2dimentional representation and hex
