@@ -94,54 +94,6 @@ void Visualizer::createPixmap()
             QPen framepen(Qt::black);
             framepen.setWidth(1);
 
-        //     //painter.fillRect(this->map.rect(),Qt::yellow);
-        //     if(this->mode == 1)
-        //     {
-        //         int i;
-        //         for(i = 0;i< size;++i)
-        //         {
-        //            switch(items[i])
-        //            {
-        //                 case 0:
-        //                         framepen.setColor(Qt::black);
-        //                         painter.setBrush(Qt::black);
-        //                         break;
-        //                 case 1:
-        //                         framepen.setColor(Qt::white);
-        //                         painter.setBrush(Qt::white);
-        //                         break;
-        //                 case 2:
-        //                         framepen.setColor(Qt::blue);
-        //                         painter.setBrush(Qt::blue);
-        //                         break;
-        //                 case 3:
-        //                         framepen.setColor(Qt::green);
-        //                         painter.setBrush(Qt::green);
-        //                         break;
-        //                 case 4:
-        //                         framepen.setColor(Qt::magenta);
-        //                         painter.setBrush(Qt::magenta);
-        //                         break;
-        //            }
-        //            // paint each square
-        //            painter.setPen(framepen);
-        //            painter.drawRect(QRectF(i%this->itemsCol * this->itemSize, i/this->itemsCol*this->itemSize,this->itemSize,this->itemSize));
-        //         }
-        //     }
-        //     else if (this->mode == 2)
-        //     {
-        //         for(int i = 0;i< size;++i)
-        //         {
-        //             //cout << "Index de la couleur = " << items[i] << "\tIteration = "<< i <<"\n";
-        //             framepen.setColor(QColor(items[i]));
-        //             painter.setBrush(QColor(items[i]));
-
-        //             painter.setPen(framepen);
-        //             painter.drawRect(QRectF(i%this->itemsCol * this->itemSize, i/this->itemsCol*this->itemSize,this->itemSize,this->itemSize));
-        //         }
-        //     }
-        //     // this->im.save("/Users/what/Pictures/qtoutput.png");
-
             for(int i=0;i<size;i++)
             {
                 framepen.setColor(items[i]);
