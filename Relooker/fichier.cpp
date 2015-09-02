@@ -27,6 +27,10 @@ void Fichier::openFile()
     }
 }
 
+std::string Fichier::getPath()
+{
+    return this->path;
+}
 
 char * Fichier::getContent()
 {

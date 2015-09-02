@@ -10,6 +10,7 @@ public:
     void openFile();
     char * getContent();
     int getSize();
+    std::string getPath();
 private:
 	char * content;
 	std::string path;

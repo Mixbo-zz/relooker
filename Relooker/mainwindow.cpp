@@ -218,7 +218,7 @@ void MainWindow::saveStats()
         if (f.open(QIODevice::WriteOnly))
         {
                 QTextStream stream(&f);
-                stream << "Stats will be here" << endl;
+                stream << QString::fromStdString(this->binaire->getPath())  << endl;
         }
         f.close();
     }
