@@ -68,10 +68,11 @@ void MainWindow::loadBinary(QString filename)
 
     this->binaire = new Fichier(filename.toUtf8().constData()); // Create the Fichier Instance
     int size = binaire->getSize();
+    this->binaire->setShannon(Algo::shannon(0,size,this->binaire->getContent(),size));
 
     ui->labelNameValue->setText(filename);  // Display basic stats
     ui->labelSizeValue->setText(QString::number(size)+" Bytes");
-    ui->labelShannonValue->setText(QString::number(Algo::shannon(0,size,this->binaire->getContent(),size)));
+    ui->labelShannonValue->setText(QString::number(this->binaire->getShannon()));
 
     this->tdim = new TwoDimension();
     this->tdim->setContent(this->binaire->getContent(),size); // Give a pointer of file to the 2dimentional representation and hex
@@ -213,12 +214,19 @@ void MainWindow::saveStats()
     }
     else
     {
-        QString filename = QFileDialog::getSaveFileName(this, "Save file", "", ".txt");
+        QString filename = QFileDialog::getSaveFileName(this, "Save file",tr("~") , "*.txt");
         QFile f( filename );
         if (f.open(QIODevice::WriteOnly))
         {
                 QTextStream stream(&f);
-                stream << QString::fromStdString(this->binaire->getPath())  << endl;
+                stream 
+                << "File:\t\t" << QString::fromStdString(this->binaire->getPath())
+                << endl
+                << "Size:\t\t" << QString::number(this->binaire->getSize()) << "Bytes"
+                << endl
+                << "Shannon:\t" << QString::number(this->binaire->getShannon())
+                ;
+
         }
         f.close();
     }

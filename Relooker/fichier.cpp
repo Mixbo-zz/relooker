@@ -40,3 +40,11 @@ int Fichier::getSize()
 {
 	return this->size;
 }
+void Fichier::setShannon(double shannon)
+{
+    this->shannon = shannon;
+}
+double Fichier::getShannon()
+{
+    return this->shannon;
+}
