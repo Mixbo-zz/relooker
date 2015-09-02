@@ -4,6 +4,7 @@
 #include <QFileDialog>
 #include <QScrollBar>
 #include <QMessageBox>
+#include <QTextStream>
 
 
 using namespace std;
@@ -199,6 +200,33 @@ void MainWindow::on_actionAbout_triggered()
                              tr("RElooker"),
                              tr("Created by Alex Bouffard\nhttps://www.github.com/mixbo/relooker")
                              );
+}
+
+void MainWindow::saveStats()
+{
+    if(!this->binaire)
+    {
+    QMessageBox::information(this,
+                             tr("RElooker"),
+                             tr("Aucune Statistique Disponible")
+                             );
+    }
+    else
+    {
+        QString filename = QFileDialog::getSaveFileName(this, "Save file", "", ".txt");
+        QFile f( filename );
+        if (f.open(QIODevice::WriteOnly))
+        {
+                QTextStream stream(&f);
+                stream << "Stats will be here" << endl;
+        }
+        f.close();
+    }
+}
+
+void MainWindow::on_actionStats_triggered()
+{
+    this->saveStats();
 }
 
 void MainWindow::update_hex_view()

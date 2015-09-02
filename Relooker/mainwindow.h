@@ -28,6 +28,8 @@ private slots:
     void colorExplainInit();
     void on_actionOpen_triggered();
     void on_actionAbout_triggered();
+    void saveStats();
+    void on_actionStats_triggered();
     void on_comboBox_mode_currentIndexChanged(int index);
     void on_checkBox_strings_toggled(bool checked);
     void on_comboBox_algo_currentIndexChanged(int index);
