@@ -35,6 +35,9 @@ private slots:
     void saveFile();
     void on_saveButton_clicked();
 
+    void on_listWidget_itemClicked(QListWidgetItem *item);
+    void on_listWidget_currentRowChanged(int currentRow);
+
 public slots:
     void update_hex_view();
 

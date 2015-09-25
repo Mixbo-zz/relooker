@@ -249,3 +249,14 @@ void MainWindow::on_saveButton_clicked()
 {
     this->saveFile();
 }
+
+void MainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
+{
+    int index = item->listWidget()->row( item );
+    ui->stackedCrypto->setCurrentIndex(index);
+}
+
+void MainWindow::on_listWidget_currentRowChanged(int currentRow)
+{
+    ui->stackedCrypto->setCurrentIndex(currentRow);
+}
