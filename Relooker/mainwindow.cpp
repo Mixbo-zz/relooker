@@ -199,7 +199,7 @@ void MainWindow::on_actionAbout_triggered()
 {
     QMessageBox::information(this,
                              tr("RElooker"),
-                             tr("Created by Alex Bouffard\nhttps://www.github.com/mixbo/relooker")
+                             tr("Created by Alex Bouffard\n\nhttps://www.github.com/mixbo/relooker\nhttp://mixbo.me")
                              );
 }
 
@@ -225,6 +225,7 @@ void MainWindow::saveStats()
                 << "Size:\t\t" << QString::number(this->binaire->getSize()) << "Bytes"
                 << endl
                 << "Shannon:\t" << QString::number(this->binaire->getShannon())
+                << endl
                 ;
 
         }
