@@ -1,4 +1,4 @@
-![Relooker](http://wakowakowako.com/mixbo/header3.png)
+![Relooker](https://github.com/Mixbo/relooker/raw/master/doc/images/header.png)
 
 
 ### Status
@@ -17,7 +17,7 @@ Basic editing will also be possible sooner or later.
 ## Which files can I analyze?
 Any. Most features are structure independant and interpret the actual content of the file instead of relying on headers and/or prior knowledge. What you see is what you get.
 
-![Screenshot](http://wakowakowako.com/mixbo/6_screen.png)
+![Screenshot](https://raw.githubusercontent.com/Mixbo/relooker/master/doc/images/5_screen.png)
 
 ## Install
 #### Install on Linux and Mac OS X
